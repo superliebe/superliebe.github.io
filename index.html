@@ -20,9 +20,9 @@
 
   <!-- 页面元数据 -->
   
-    <title>superKM</title>
+    <title>superKM的博客</title>
   
-    <meta name="keywords" content="关键字">
+    <meta name="keywords" content="博客,blog,Blog,superKM,vue,js,javascript,es6">
   
   
     <meta name="description" content="superKM的个人博客">
@@ -30,7 +30,7 @@
 
   <!-- feed -->
   
-    <link rel="alternate" href="/superjinx.github.io/atom.xml" title="superKM">
+    <link rel="alternate" href="/superjinx.github.io/atom.xml" title="superKM的博客">
   
 
   <!-- import meta -->
@@ -516,162 +516,16 @@
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
       
-        <blockquote>
-<p>💡 Markdown 是一种轻量级标记语言，它允许人们使用易读易写的纯文本格式编写文档。</p>
-</blockquote>
-<h2 id="一、标题"><a href="#一、标题" class="headerlink" title="一、标题"></a>一、标题</h2><ul>
-<li>使用 # 表示标题，一级标题使用一个 # ，二级标题使用两个 ## ，以此类推，共有六级标题。# 和标题之间记得有个空格哦。</li>
-</ul>
-<h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><h4 id="四级标题"><a href="#四级标题" class="headerlink" title="四级标题"></a>四级标题</h4><h5 id="五级标题"><a href="#五级标题" class="headerlink" title="五级标题"></a>五级标题</h5><h6 id="六级标题"><a href="#六级标题" class="headerlink" title="六级标题"></a>六级标题</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 一级标题</span><br><span class="line">## 二级标题</span><br><span class="line">### 三级标题</span><br><span class="line">#### 四级标题</span><br><span class="line">##### 五级标题</span><br><span class="line">###### 六级标题</span><br></pre></td></tr></table></figure>
-
-<h2 id="二、引用"><a href="#二、引用" class="headerlink" title="二、引用"></a>二、引用</h2><p>使用 &gt; 表示引用， &gt;&gt; 表示引用里面再套一层引用，依次类推。</p>
-<blockquote>
-<p>❗ 部分编辑器不支持多级嵌套，建议不要使用</p>
-</blockquote>
-<p><em>示例</em></p>
-<blockquote>
-<p>这是一级引用</p>
-<blockquote>
-<p>这是二级引用</p>
-<blockquote>
-<p>这是三级引用</p>
-</blockquote>
-</blockquote>
-</blockquote>
-<blockquote>
-<p>这是一级引用</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt; 这是一级引用</span><br><span class="line">&gt;</span><br><span class="line">&gt; &gt; 这是二级引用</span><br><span class="line">&gt; &gt;</span><br><span class="line">&gt; &gt; &gt; 这是三级引用</span><br><span class="line"></span><br><span class="line">&gt; 这是一级引用</span><br></pre></td></tr></table></figure>
-
-<h2 id="三、代码块"><a href="#三、代码块" class="headerlink" title="三、代码块"></a>三、代码块</h2><p>使用 3 个连续的` 符号包围起来表示代码块。可以指定语言来使代码高亮。</p>
-<p><em>示例</em></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$(document).ready(function() &#123;</span><br><span class="line">  $(&#39;pre code&#39;).each(function(i, block) &#123;</span><br><span class="line">    hljs.highlightBlock(block);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  $(<span class="string">"pre code"</span>).each(<span class="function"><span class="keyword">function</span> (<span class="params">i, block</span>) </span>&#123;</span><br><span class="line">    hljs.highlightBlock(block);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p><strong>行内代码</strong></p>
-<p>使用``表示行内代码。本页部分文字中间的英文字母就是使用行内代码标记标记的。</p>
-<p><em>示例</em></p>
-<p>这是 <code>javascript</code> 代码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">这是&#96;javascript&#96;代码</span><br></pre></td></tr></table></figure>
-
-<h2 id="四、链接"><a href="#四、链接" class="headerlink" title="四、链接"></a>四、链接</h2><p>使用 <font color=#2196f3><code>[](link)</code></font> 表示行内链接。其中：</p>
-<ul>
-<li><p><font color=#2196f3>[]</font> 内的内容为要添加链接的文字。</p>
-</li>
-<li><p><font color=#2196f3>link</font> 为链接地址。</p>
-</li>
-</ul>
-<p><em>示例</em></p>
-<p>这是跳转<a href="https://www.baidu.com" target="_blank" rel="noopener">百度</a>的链接</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">这是跳转[百度](https:&#x2F;&#x2F;www.baidu.com)的链接</span><br></pre></td></tr></table></figure>
-
-<h2 id="五、导入图片"><a href="#五、导入图片" class="headerlink" title="五、导入图片"></a>五、导入图片</h2><p>使用 <code>![Alt text](/path/to/img.jpg)</code> 导入图片。其中：</p>
-<ul>
-<li><font color=#2196f3>Alt text</font> 为如果图片无法显示时显示的文字；</li>
-<li><font color=#2196f3>/path/to/img.jpg</font> 为图片所在路径；</li>
-</ul>
-<ol>
-<li><strong>本地引用</strong>是图片直接存储到本地通过相对路径引用，无需网络连接</li>
-<li><strong>上传图片</strong>将把图片上传至<a href="https://imgchr.com" target="_blank" rel="noopener">图床</a>，这样在文档或图片移动时认可访问图片</li>
-</ol>
-<p><em>示例</em></p>
-<p><img src="https://i.loli.net/2020/03/14/I8wCZN4r9UltqTd.jpg" alt="Markdown"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![Markdown](https:&#x2F;&#x2F;i.loli.net&#x2F;2020&#x2F;03&#x2F;14&#x2F;I8wCZN4r9UltqTd.jpg)</span><br></pre></td></tr></table></figure>
-
-<h2 id="六、Todo-List"><a href="#六、Todo-List" class="headerlink" title="六、Todo List"></a>六、Todo List</h2><p>小写 x 表示已完成， 空格表示未完成</p>
-<ul>
-<li><input checked="" disabled="" type="checkbox"> 支持数学公式</li>
-<li><input checked="" disabled="" type="checkbox"> 支持 TodoList</li>
-<li><input checked="" disabled="" type="checkbox"> 支持自定义样式</li>
-<li><input disabled="" type="checkbox"> 支持自定义图床</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- [x] 支持数学公式</span><br><span class="line">- [x] 支持TodoList</span><br><span class="line">- [x] 支持自定义样式</span><br><span class="line">- [ ] 支持自定义图床</span><br></pre></td></tr></table></figure>
-
-<h2 id="七、粗体，斜体，高亮和删除线"><a href="#七、粗体，斜体，高亮和删除线" class="headerlink" title="七、粗体，斜体，高亮和删除线"></a>七、粗体，斜体，高亮和删除线</h2><ul>
-<li>使用 <code>**</code> 表示<strong>粗体</strong>。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">**粗体**</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>使用 <code>*</code> 或者 <code>_</code> 表示 _斜体_。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*斜体*</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>使用 <code>***</code> 表示 <strong><em>全部粗体和斜体</em></strong></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">***全部粗体和斜体***</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>使用 <code>==</code> 表示 ==高亮==</li>
-</ul>
-<blockquote>
-<p>❗ 部分编辑器不支持高亮</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x3D;&#x3D;高亮&#x3D;&#x3D;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>使用<code>~~</code>表示 <del>删除</del></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~~删除~~</span><br></pre></td></tr></table></figure>
-
-<h2 id="八、列表"><a href="#八、列表" class="headerlink" title="八、列表"></a>八、列表</h2><p>使用 <code>1. 1. 1.</code> 表示有序列表，使用 <code>*</code> 或 <code>-</code> 或 <code>+</code> 表示无序列表。</p>
-<ol>
-<li><p>无序列表或有序列表标记和后面的文字之间要有一个空格隔开。</p>
-</li>
-<li><p>有序列表标记不是按照你写的数字进行显示的，而是根据当前有序列表标记所在位置显示的，如示例 1 所示。</p>
-</li>
-<li><p>无序列表的项目符号是按照实心圆、空心圆、实心方格的层级关系递进的，如例 2 所示。通常情况下，同一层级使用同一种标记表示，便于自己查看和管理。</p>
-</li>
-</ol>
-<p>_示例 1_：有序列表</p>
-<ol>
-<li>第 1 行</li>
-<li>第 2 行</li>
-<li>第 3 行</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. 第1行</span><br><span class="line">1. 第2行</span><br><span class="line">1. 第3行</span><br></pre></td></tr></table></figure>
-
-<p>_示例 2_：无序列表</p>
-<ul>
-<li>一级无序列表内容<ul>
-<li>二级无序列表内容<ul>
-<li>三级无序列表内容</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>一级无序列表内容</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">+ 一级无序列表内容</span><br><span class="line">    - 二级无序列表内容</span><br><span class="line">        - 三级无序列表内容</span><br><span class="line">*  一级无序列表内容</span><br></pre></td></tr></table></figure>
-
-<h2 id="九、分割线"><a href="#九、分割线" class="headerlink" title="九、分割线"></a>九、分割线</h2><p>使用 <code>---</code> 或者 <code>***</code> 或者 <code>* * *</code> 表示水平分割线。</p>
-<ol>
-<li>只要 <code>*</code> 或者 <code>-</code> 大于等于三个就可组成一条平行线。</li>
-<li>使用 <code>---</code> 作为水平分割线时，要在它的前后都空一行，防止 <code>---</code> 被当成标题标记的表示方式。</li>
-</ol>
-<p><em>示例</em></p>
-<hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line"></span><br><span class="line">***</span><br><span class="line"></span><br><span class="line">* * *</span><br></pre></td></tr></table></figure>
-
-<h2 id="十、表格"><a href="#十、表格" class="headerlink" title="十、表格"></a>十、表格</h2><p>默认表格<br>Heading | Heading | Heading<br>——- | ——- | ——-<br>Cell | Cell | Cell<br>Cell | Cell | Cell</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Heading | Heading | Heading</span><br><span class="line">------- | ------- | -------</span><br><span class="line">Cell | Cell | Cell</span><br><span class="line">Cell | Cell | Cell</span><br></pre></td></tr></table></figure>
-
-<p>对齐方式：<br>Heading | Heading | Heading<br>:—– | :—-: | ——:<br>Left | Center | Right<br>Left | Center | Right</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Heading | Heading | Heading</span><br><span class="line">:----- | :----: | ------:</span><br><span class="line">Left   | Center | Right</span><br><span class="line">Left   | Center | Right</span><br></pre></td></tr></table></figure>
-
-<h2 id="十一、emoji"><a href="#十一、emoji" class="headerlink" title="十一、emoji"></a>十一、emoji</h2><p>使用 <code>:emoji</code>代码: 在 markdown 里添加 emoji 👻</p>
-<p><a href="https://www.webfx.com/tools/emoji-cheat-sheet/" target="_blank" rel="noopener">点击这里查看所有支持的 emoji 代码</a></p>
-<blockquote>
-<p>❗ 部分编辑器不支持 emoji code <br><br>建议直接输入 emoji，<a href="https://www.emojidaquan.com" target="_blank" rel="noopener">点击这里查看并复制 emoji</a></p>
-</blockquote>
-
+        <p>Markdown 是一种轻量级标记语言，它允许人们使用易读易写的纯文本格式编写文档</p>
       
     </div>
     
+      
+        <div class="button readmore">
+          <a href="/superjinx.github.io/2020/05/24/%E5%B8%B8%E7%94%A8Markdown%E8%AF%AD%E6%B3%95/">
+            阅读全文 <i class="fas fa-chevron-right"></i>
+          </a>
+        </div>
       
     
   </section>
@@ -812,7 +666,7 @@
         
         
         
-          <p><span id="jinrishici-sentence">superKM</span></p>
+          <p><span id="jinrishici-sentence">superKM的博客</span></p>
           <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
         
       </div>
