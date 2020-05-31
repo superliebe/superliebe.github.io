@@ -5,10 +5,6 @@
   <!-- SEO相关 -->
   
     
-      
-        <meta name="robots" content="index,follow">
-      
-    
   
   <!-- 渲染优化 -->
   <meta name="renderer" content="webkit">
@@ -20,12 +16,11 @@
 
   <!-- 页面元数据 -->
   
-    <title>superKM的博客</title>
-  
-    <meta name="keywords" content="博客,blog,Blog,superKM,vue,js,javascript,es6">
+    <title>linux常用命令 - superKM的博客</title>
   
   
-    <meta name="description" content="superKM的个人博客">
+    <meta name="description" content="
+Linux，全称 GNU/Linux，是一套免费使用和自由传播的类 UNIX 操作系统">
   
 
   <!-- feed -->
@@ -78,92 +73,7 @@
 
 <body>
   
-  <div class="cover-wrapper">
-    
-      <cover class='cover  full'>
-        <div class='cover-body'>
-  <div class='a'>
-    
-    
-      <p class="title">superKM’s Blog</p>
-    
-    
-      <p class="subtitle">Don’t Repeat Yourself</p>
-    
-  </div>
-  <div class='b'>
-    
-      <div class="m_search">
-        <form name="searchform" class="form u-search-form">
-          <input type="text" class="input u-search-input" placeholder="搜搜看看" />
-          <i class="icon fas fa-search fa-fw"></i>
-        </form>
-      </div>
-    
-    <div class='menu navigation'>
-      <ul class='cover-list-h'>
-        
-          
-            <li>
-              <a class="nav home"
-                href="/"
-                
-                
-                id="home">
-                <i class='fas fa-book fa-fw'></i>首页
-              </a>
-            </li>
-          
-            <li>
-              <a class="nav home"
-                href="/categories/"
-                
-                
-                id="categories">
-                <i class='fas fa-folder-open fa-fw'></i>分类
-              </a>
-            </li>
-          
-            <li>
-              <a class="nav home"
-                href="/tags/"
-                
-                
-                id="tags">
-                <i class='fas fa-tags fa-fw'></i>标签
-              </a>
-            </li>
-          
-            <li>
-              <a class="nav home"
-                href="/archives/"
-                
-                
-                id="archives">
-                <i class='fas fa-archive fa-fw'></i>归档
-              </a>
-            </li>
-          
-            <li>
-              <a class="nav home"
-                href="/about/"
-                
-                
-                id="about">
-                <i class='fas fa-info-circle fa-fw'></i>关于我
-              </a>
-            </li>
-          
-        
-      </ul>
-    </div>
-  </div>
-</div>
-
-        <div class="scroll-down"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
-      </cover>
-    
-    <div id="loading-bar-wrapper">
+  <div id="loading-bar-wrapper">
   <div id="loading-bar"></div>
 </div>
 <header class="l_header shadow blur">
@@ -416,33 +326,18 @@
 
 <script>setLoadingBarProgress(40);</script>
 
-  </div>
 
 
-  <div class="l_body">
+  <div class="l_body nocover">
     <div class='body-wrapper'>
       
 
 <div class='l_main'>
   
-  <section class="post-list ">
-    
-      
-        
-          
-        
-          
-        
-          
-        
-      
-    
-    
-      
-        
-          <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
+
   
+    <article id="post" class="post white-box reveal shadow article-type-post" itemscope itemprop="blogPost">
+      
 
 
   <section class='meta'>
@@ -452,11 +347,11 @@
       <div class="meta" id="header-meta">
         
           
-  <h2 class="title">
+  <h1 class="title">
     <a href="/2020/05/31/linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
       linux常用命令
     </a>
-  </h2>
+  </h1>
 
 
         
@@ -492,24 +387,6 @@
           
             
               
-  <div class="new-meta-item wordcount">
-    <a class='notlink'>
-      <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
-      <p>字数：378字</p>
-    </a>
-  </div>
-  <div class="new-meta-item readtime">
-    <a class='notlink'>
-      <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
-      <p>时长：1分钟</p>
-    </a>
-  </div>
-
-
-            
-          
-            
-              
 
             
           
@@ -522,331 +399,101 @@
   </section>
 
 
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="https://s1.ax1x.com/2020/05/31/t1k2xU.jpg" alt="linux"></p>
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          <p><img src="https://s1.ax1x.com/2020/05/31/t1k2xU.jpg" alt="linux"></p>
 <p>Linux，全称 GNU/Linux，是一套免费使用和自由传播的类 UNIX 操作系统</p>
-      
-    </div>
-    
-      
-        <div class="button readmore">
-          <a href="/2020/05/31/linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
-            阅读全文 <i class="fas fa-chevron-right"></i>
-          </a>
-        </div>
-      
-    
-  </section>
-</article>
+<a id="more"></a>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
-  
+<h3 id="文件相关"><a href="#文件相关" class="headerlink" title="文件相关"></a>文件相关</h3><ul>
+<li><p>cd dirname 目录路径跳转</p>
+</li>
+<li><p>mkdir dirname 创建目录</p>
+</li>
+<li><p>touch filename 创建文件</p>
+</li>
+<li><p>vi filename 编辑文件</p>
+</li>
+<li><p>cat filename 查看文件</p>
+</li>
+<li><p>echo ‘123456’ &gt;&gt; test.txt 在 test.txt 文件尾部增加一行 ‘123123’</p>
+</li>
+<li><p>echo ‘123456’ &gt; test.txt 覆盖 test.txt 文件的内容为 ‘hello world’</p>
+</li>
+<li><p>rm text.txt 删除 text.txt 文件</p>
+</li>
+<li><p>rm -r textdir 删除 testdir 目录</p>
+</li>
+<li><p>rm -rf 强制删除</p>
+</li>
+<li><p>wget 文件地址 下载文件</p>
+</li>
+<li><p>tar zxvf 文件 （如 apache-tomcat-9.0.17.tar.zg：解压缩文件 tar 后面的参数 z 代表 gz 等结尾的压缩文件，x 代表解压缩，v 显示所有的解压过程，f 代表归档的名字）</p>
+</li>
+<li><p>tar zcvf 文件名（如 apache-tomcat-9.0.18.tar.gz） 文件目录：讲文件目录 压缩为 文件名为 apache-tomcat-9.0.18.tar.gz</p>
+</li>
+<li><p>ps -ef | grep 进程名： 查看进程（筛选进程）</p>
+</li>
+<li><p>kill -9 进程 pid: 杀死 进程</p>
+</li>
+</ul>
+<h3 id="查看系统服务"><a href="#查看系统服务" class="headerlink" title="查看系统服务"></a>查看系统服务</h3><ul>
+<li>service 服务名 status: 如 （service sshd status :查询 ssh 服务的运行状态）</li>
+<li>service 服务名 stop :关闭某个服务</li>
+<li>service 服务名 restart:重启某个服务</li>
+<li>systemctl status firewalld.service: 查看某个服务运行状态</li>
+</ul>
+<h3 id="使用-root-用户连接-linux-服务器"><a href="#使用-root-用户连接-linux-服务器" class="headerlink" title="使用 root 用户连接 linux 服务器"></a>使用 root 用户连接 linux 服务器</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh root@ip</span><br></pre></td></tr></table></figure>
 
+<h3 id="防火墙设置"><a href="#防火墙设置" class="headerlink" title="防火墙设置"></a>防火墙设置</h3><p>检查防火墙</p>
+<p><code>firewall-cmd --permanent --query-port=10022/tcp</code></p>
+<p>如果是 no,就添加一下</p>
+<p><code>firewall-cmd --permanent --add-port=10022/tcp</code></p>
+<p>成功后再重载防火墙</p>
+<p><code>firewall-cmd --reload</code></p>
+<p>再重启下防火墙服务</p>
+<p><code>systemctl restart firewalld.service</code></p>
 
-  <section class='meta'>
-    
-      
-      
-        <a title='常用Markdown语法' href='/2020/05/24/%E5%B8%B8%E7%94%A8Markdown%E8%AF%AD%E6%B3%95/'><img class='thumbnail' src='https://img.vim-cn.com/17/0c7b02722686d1527a1df807dae0794d995860.png'></a>
-      
-      <div class="meta" id="header-meta">
-        
           
-  <h2 class="title">
-    <a href="/2020/05/24/%E5%B8%B8%E7%94%A8Markdown%E8%AF%AD%E6%B3%95/">
-      常用Markdown语法
-    </a>
-  </h2>
-
-
-        
-        <div class='new-meta-box'>
-          
-            
-          
-            
+            <div class='article_footer'>
               
-<div class='new-meta-item author'>
-  <a href="" rel="nofollow">
-    <img src="http://oss.jishiyoo.com/images/file-1590246592360.png">
-    <p>superKM</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/Markdown/' rel="nofollow">
-      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <p>Markdown</p>
-    </a>
-  </div>
-
-
-            
-          
-            
-              <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2020年5月24日</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-  <div class="new-meta-item wordcount">
-    <a class='notlink'>
-      <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
-      <p>字数：1.2k字</p>
-    </a>
-  </div>
-  <div class="new-meta-item readtime">
-    <a class='notlink'>
-      <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
-      <p>时长：4分钟</p>
-    </a>
-  </div>
-
-
-            
-          
-            
-              
-
-            
-          
-        </div>
-        
-          <hr>
-        
-      </div>
-    
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="https://s1.ax1x.com/2020/05/24/YzvhqJ.png" alt=""></p>
-<p>Markdown 是一种轻量级标记语言，它允许人们使用易读易写的纯文本格式编写文档</p>
-      
-    </div>
-    
-      
-        <div class="button readmore">
-          <a href="/2020/05/24/%E5%B8%B8%E7%94%A8Markdown%E8%AF%AD%E6%B3%95/">
-            阅读全文 <i class="fas fa-chevron-right"></i>
-          </a>
-        </div>
-      
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
-  
-
-
-  <section class='meta'>
-    
-      
-      
-      <div class="meta" id="header-meta">
-        
-          
-  <h2 class="title">
-    <a href="/2020/04/26/kbone-vue%E5%88%9B%E5%BB%BA%E6%94%AF%E6%8C%81web%E5%92%8C%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%9A%84%E9%A1%B9%E7%9B%AE/">
-      kbone+vue创建支持web和微信小程序的项目
-    </a>
-  </h2>
-
-
-        
-        <div class='new-meta-box'>
-          
-            
-          
-            
-              
-<div class='new-meta-item author'>
-  <a href="" rel="nofollow">
-    <img src="http://oss.jishiyoo.com/images/file-1590246592360.png">
-    <p>superKM</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/vue/kbone/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/' rel="nofollow">
-      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <p>vue/kbone/微信小程序</p>
-    </a>
-  </div>
-
-
-            
-          
-            
-              <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2020年4月26日</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-  <div class="new-meta-item wordcount">
-    <a class='notlink'>
-      <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
-      <p>字数：454字</p>
-    </a>
-  </div>
-  <div class="new-meta-item readtime">
-    <a class='notlink'>
-      <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
-      <p>时长：1分钟</p>
-    </a>
-  </div>
-
-
-            
-          
-            
-              
-
-            
-          
-        </div>
-        
-          <hr>
-        
-      </div>
-    
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="https://pic1.zhimg.com/v2-7a735d09695218bec1d69477f6a243bc_1200x500.jpg" alt=""></p>
-<p>Kbone 是腾讯开发的解决微信小程序和 Web 端同构的框架。简单来说就是只写一套代码，编译结果可以在 web 端和小程序上运行。</p>
-      
-    </div>
-    
-      
-        <div class="button readmore">
-          <a href="/2020/04/26/kbone-vue%E5%88%9B%E5%BB%BA%E6%94%AF%E6%8C%81web%E5%92%8C%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%9A%84%E9%A1%B9%E7%9B%AE/">
-            阅读全文 <i class="fas fa-chevron-right"></i>
-          </a>
-        </div>
-      
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-    
-  </section>
-  
-    
-    <!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
-    
-    
-
-  
-
-
-</div>
-<aside class='l_side'>
-  
+                
   
     
     
 
-<section class="widget blogger shadow desktop mobile">
+
+
+  
+
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
   <div class='content'>
     
-      
-        <a class='avatar flat-box' href='/about/'>
-          <img no-lazy src='http://oss.jishiyoo.com/images/file-1590255590991.jpg'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-          <h2>superKM</h2>
-        
-        
-        
-          <p><span id="jinrishici-sentence">superKM的博客</span></p>
-          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
+      <blockquote>
         
           
-            <a href="/atom.xml"
-              class="social fas fa-rss flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
+            <p>学无止境！奥里给！</p>
+
           
         
           
-            <a href="mailto:583902049@qq.com"
-              class="social fas fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
+            <p>本文永久链接是<a href=http://superliebe.github.io/2020/05/31/linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/>http://superliebe.github.io/2020/05/31/linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</a></p>
           
         
-          
-            <a href="https://github.com/superliebe"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
-          
-        
-          
-            <a href="https://music.163.com/#/playlist?id=706943256"
-              class="social fas fa-headphones-alt flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
-          
-        
-      </div>
+      </blockquote>
     
   </div>
 </section>
@@ -856,68 +503,145 @@
   
     
     
+
+<section class="widget qrcode  desktop mobile">
   
 
-  <section class="widget category shadow desktop">
+  <div class='content article-entry'>
+    
+  </div>
+</section>
+
+  
+
+
+              
+            </div>
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-05-31T15:09:57+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2020年5月31日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+
+        
+      
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+          <div class="prev-next">
+            
+            
+              <a class='next' href='/2020/05/24/%E5%B8%B8%E7%94%A8Markdown%E8%AF%AD%E6%B3%95/'>
+                <p class='title'>常用Markdown语法<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>
+Markdown 是一种轻量级标记语言，它允许人们使用易读易写的纯文本格式编写文档
+
+
+
+
+💡 Markdown 是一种轻量级标记语言，它允许人们使用易读易写的纯文本格式编写文档。
+
+一、标...</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
+  
+
+  
+    <!-- 显示推荐文章和评论 -->
+
+
+
+  <article class="post white-box reveal comments shadow">
+    <section class="article typo">
+      <p ct><i class='fas fa-comments'></i> 评论</p>
+      
+      
+      
+      
+      
+      
+        <section id="comments">
+          <div id="valine_container" class="valine_thread">
+            <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+          </div>
+        </section>
+      
+      
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: 'linux常用命令',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+  
+
+  
+    
+    
+
+
+  <section class="widget toc-wrapper shadow desktop mobile">
     
   <header>
     
-      <a href='/blog/categories/'><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
     
   </header>
 
 
     <div class='content'>
-      <ul class="entry navigation">
-        
-          <li><a class="flat-box"
-            title="/categories/Markdown/" href="/categories/Markdown/"
-            id="categoriesMarkdown"
-            ><div class='name'>Markdown</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/vue/" href="/categories/vue/"
-            id="categoriesvue"
-            ><div class='name'>vue</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/vue/kbone/" href="/categories/vue/kbone/"
-            id="categoriesvuekbone"
-            ><div class='name'>kbone</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/vue/kbone/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" href="/categories/vue/kbone/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/"
-            id="categoriesvuekboneE5BEAEE4BFA1E5B08FE7A88BE5BA8F"
-            ><div class='name'>微信小程序</div><div class='badge'>(1)</div></a></li>
-        
-      </ul>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#文件相关"><span class="toc-text">文件相关</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看系统服务"><span class="toc-text">查看系统服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用-root-用户连接-linux-服务器"><span class="toc-text">使用 root 用户连接 linux 服务器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#防火墙设置"><span class="toc-text">防火墙设置</span></a></li></ol>
     </div>
   </section>
 
-
-  
-
-  
-    
-    
-  
-
-  <section class="widget tagcloud shadow desktop mobile">
-    
-  <header>
-    
-      <a href='/blog/tags/'><i class="fas fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-      <a href="/tags/Markdown/" style="font-size: 14px; color: #999">Markdown</a> <a href="/tags/kbone-vue/" style="font-size: 14px; color: #999">kbone,vue</a>
-    </div>
-  </section>
-
-
-  
 
   
 
@@ -1131,6 +855,60 @@
 
 
 
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/valine@1.4/dist/Valine.min.js"></script>
+
+  
+  <script>
+  var GUEST_INFO = ['nick','mail','link'];
+  var meta = 'nick,mail,link'.split(',').filter(function(item){
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var REQUIRED_FIELDS = ['nick','mail','link'];
+  var requiredFields = 'nick,mail'.split(',').filter(function(item){
+    return REQUIRED_FIELDS.indexOf(item) > -1
+  });
+  var valine = new Valine();
+  function emoji(path, idx, ext) {
+      return path + "/" + path + "-" + idx + "." + ext;
+  }
+  var emojiMaps = {};
+  for (var i = 1; i <= 54; i++) {
+    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+  }
+  for (var i = 1; i <= 101; i++) {
+    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+  }
+  for (var i = 1; i <= 116; i++) {
+    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+  }
+  for (var i = 1; i <= 125; i++) {
+    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+  }
+  for (var i = 1; i <= 4; i++) {
+    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+  }
+  valine.init({
+    el: '#valine_container',
+    meta: meta,
+    
+    appId: "dogUA2FSKGTo029M1SEwGROT-MdYXbMMI",
+    appKey: "u0NdtQ8nvHoMdJPSYqm1LRxE",
+    placeholder: "快来评论吧~",
+    pageSize:'10',
+    avatar:'robohash',
+    lang:'zh-cn',
+    visitor: 'true',
+    highlight: 'true',
+    mathJax: 'false',
+    enableQQ: 'true',
+    requiredFields: requiredFields,
+    emojiCDN: 'https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/',
+    emojiMaps: emojiMaps
+  })
+  </script>
+
 
 
 
@@ -1262,5 +1040,5 @@
 
 
   <script>setLoadingBarProgress(100);</script>
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7}});</script><script>'use strict';'serviceWorker'in navigator&&navigator.serviceWorker.register('service-worker.js').then(function(a){a.onupdatefound=function(){var b=a.installing;b.onstatechange=function(){switch(b.state){case'installed':navigator.serviceWorker.controller?console.log('New or updated content is available.'):console.log('Content is now available offline!');break;case'redundant':console.error('The installing service worker became redundant.');}}}}).catch(function(a){console.error('Error during service worker registration:',a)});
-</script></body></html>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7}});</script></body>
+</html>
