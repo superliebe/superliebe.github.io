@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>yarn使安装健步如飞</title>
+      <link href="/2020/06/01/yarn%E4%BD%BF%E5%AE%89%E8%A3%85%E5%81%A5%E6%AD%A5%E5%A6%82%E9%A3%9E/"/>
+      <url>/2020/06/01/yarn%E4%BD%BF%E5%AE%89%E8%A3%85%E5%81%A5%E6%AD%A5%E5%A6%82%E9%A3%9E/</url>
+      
+        <content type="html"><![CDATA[<p><img src="https://s1.ax1x.com/2020/06/01/tJDuO1.png" alt="tJDuO1.png"></p><p>yarn 快速、可靠、安全的依赖管理工具。</p><a id="more"></a><h3 id="🙄-为什么要用-yarn"><a href="#🙄-为什么要用-yarn" class="headerlink" title="🙄 为什么要用 yarn"></a>🙄 为什么要用 yarn</h3><p><strong>速度超快</strong></p><p>Yarn 缓存了每个下载过的包，所以再次使用时无需重复下载。 同时利用并行下载以最大化资源利用率，因此安装速度更快。</p><p><strong>超级安全</strong></p><p>在执行代码之前，Yarn 会通过算法校验每个安装包的完整性。</p><p><strong>超级可靠</strong></p><p>使用详细、简洁的锁文件格式和明确的安装算法，Yarn 能够保证在不同系统上无差异的工作。</p><h3 id="🧐-更新淘宝源"><a href="#🧐-更新淘宝源" class="headerlink" title="🧐 更新淘宝源"></a>🧐 更新淘宝源</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># yarn+淘宝源，飞一般的速度</span><br><span class="line">yarn config <span class="keyword">get</span> registry</span><br><span class="line"># https://registry.yarnpkg.com </span><br><span class="line"></span><br><span class="line">yarn config <span class="keyword">set</span> registry https://registry.npm.taobao.org</span><br><span class="line"></span><br><span class="line">yarn config <span class="keyword">get</span> registry</span><br><span class="line"># https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure><h3 id="从npm迁移"><a href="#从npm迁移" class="headerlink" title="从npm迁移"></a>从npm迁移</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">npm install === yarn</span><br><span class="line"></span><br><span class="line">pm install [package] --save === yarn add [package]</span><br><span class="line"></span><br><span class="line">npm install [package] --save-dev === yarn add [package] --dev</span><br><span class="line"></span><br><span class="line">npm install [package] --global === yarn global add [package]</span><br><span class="line"></span><br><span class="line">npm uninstall [package] --save === yarn remove [package]</span><br><span class="line"></span><br><span class="line">rm -rf node_modules &amp;&amp; npm install === yarn upgrade</span><br></pre></td></tr></table></figure><p><a href="https://yarn.bootcss.com" target="_blank" rel="noopener">yarn官网</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> vue </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> npm,yarn </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>linux常用命令</title>
       <link href="/2020/05/31/linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
       <url>/2020/05/31/linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
@@ -11,6 +36,12 @@
         <content type="html"><![CDATA[<p><img src="https://s1.ax1x.com/2020/05/31/t1k2xU.jpg" alt="linux"></p><p>Linux，全称 GNU/Linux，是一套免费使用和自由传播的类 UNIX 操作系统</p><a id="more"></a><h3 id="文件相关"><a href="#文件相关" class="headerlink" title="文件相关"></a>文件相关</h3><ul><li><p>cd dirname 目录路径跳转</p></li><li><p>mkdir dirname 创建目录</p></li><li><p>touch filename 创建文件</p></li><li><p>vi filename 编辑文件</p></li><li><p>cat filename 查看文件</p></li><li><p>echo ‘123456’ &gt;&gt; test.txt 在 test.txt 文件尾部增加一行 ‘123123’</p></li><li><p>echo ‘123456’ &gt; test.txt 覆盖 test.txt 文件的内容为 ‘hello world’</p></li><li><p>rm text.txt 删除 text.txt 文件</p></li><li><p>rm -r textdir 删除 testdir 目录</p></li><li><p>rm -rf 强制删除</p></li><li><p>wget 文件地址 下载文件</p></li><li><p>tar zxvf 文件 （如 apache-tomcat-9.0.17.tar.zg：解压缩文件 tar 后面的参数 z 代表 gz 等结尾的压缩文件，x 代表解压缩，v 显示所有的解压过程，f 代表归档的名字）</p></li><li><p>tar zcvf 文件名（如 apache-tomcat-9.0.18.tar.gz） 文件目录：讲文件目录 压缩为 文件名为 apache-tomcat-9.0.18.tar.gz</p></li><li><p>ps -ef | grep 进程名： 查看进程（筛选进程）</p></li><li><p>kill -9 进程 pid: 杀死 进程</p></li></ul><h3 id="查看系统服务"><a href="#查看系统服务" class="headerlink" title="查看系统服务"></a>查看系统服务</h3><ul><li>service 服务名 status: 如 （service sshd status :查询 ssh 服务的运行状态）</li><li>service 服务名 stop :关闭某个服务</li><li>service 服务名 restart:重启某个服务</li><li>systemctl status firewalld.service: 查看某个服务运行状态</li></ul><h3 id="使用-root-用户连接-linux-服务器"><a href="#使用-root-用户连接-linux-服务器" class="headerlink" title="使用 root 用户连接 linux 服务器"></a>使用 root 用户连接 linux 服务器</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh root@ip</span><br></pre></td></tr></table></figure><h3 id="防火墙设置"><a href="#防火墙设置" class="headerlink" title="防火墙设置"></a>防火墙设置</h3><p>检查防火墙</p><p><code>firewall-cmd --permanent --query-port=10022/tcp</code></p><p>如果是 no,就添加一下</p><p><code>firewall-cmd --permanent --add-port=10022/tcp</code></p><p>成功后再重载防火墙</p><p><code>firewall-cmd --reload</code></p><p>再重启下防火墙服务</p><p><code>systemctl restart firewalld.service</code></p>]]></content>
       
       
+      
+        <tags>
+            
+            <tag> linux </tag>
+            
+        </tags>
       
     </entry>
     
