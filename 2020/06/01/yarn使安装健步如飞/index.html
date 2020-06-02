@@ -418,17 +418,22 @@ yarn 快速、可靠、安全的依赖管理工具。">
 <p>yarn 快速、可靠、安全的依赖管理工具。</p>
 <a id="more"></a>
 
+<h3 id="看栗子说话"><a href="#看栗子说话" class="headerlink" title="看栗子说话"></a>看栗子说话</h3><p><font color=#f44>采用 cnpm 和 yarn 安装 webpack 工具</font></p>
+<p><strong>cnpm 效果图（总花费 60s）</strong></p>
+<p><img src="https://s1.ax1x.com/2020/06/02/tYrdQH.png" alt="cnpm 效果图"></p>
+<p><strong>yarn 效果图（总花费 16s）</strong></p>
+<p><img src="https://s1.ax1x.com/2020/06/02/tYs3cQ.png" alt="yarn 效果图"></p>
 <h3 id="🙄-为什么要用-yarn"><a href="#🙄-为什么要用-yarn" class="headerlink" title="🙄 为什么要用 yarn"></a>🙄 为什么要用 yarn</h3><p><strong>速度超快</strong></p>
 <p>Yarn 缓存了每个下载过的包，所以再次使用时无需重复下载。 同时利用并行下载以最大化资源利用率，因此安装速度更快。</p>
 <p><strong>超级安全</strong></p>
 <p>在执行代码之前，Yarn 会通过算法校验每个安装包的完整性。</p>
 <p><strong>超级可靠</strong></p>
 <p>使用详细、简洁的锁文件格式和明确的安装算法，Yarn 能够保证在不同系统上无差异的工作。</p>
-<h3 id="🧐-更新淘宝源"><a href="#🧐-更新淘宝源" class="headerlink" title="🧐 更新淘宝源"></a>🧐 更新淘宝源</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># yarn+淘宝源，飞一般的速度</span><br><span class="line">yarn config <span class="keyword">get</span> registry</span><br><span class="line"># https://registry.yarnpkg.com </span><br><span class="line"></span><br><span class="line">yarn config <span class="keyword">set</span> registry https://registry.npm.taobao.org</span><br><span class="line"></span><br><span class="line">yarn config <span class="keyword">get</span> registry</span><br><span class="line"># https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
+<h3 id="🧐-更新淘宝源"><a href="#🧐-更新淘宝源" class="headerlink" title="🧐 更新淘宝源"></a>🧐 更新淘宝源</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># yarn+淘宝源，飞一般的速度</span><br><span class="line">yarn config <span class="keyword">get</span> registry</span><br><span class="line"># https://registry.yarnpkg.com</span><br><span class="line"></span><br><span class="line">yarn config <span class="keyword">set</span> registry https://registry.npm.taobao.org</span><br><span class="line"></span><br><span class="line">yarn config <span class="keyword">get</span> registry</span><br><span class="line"># https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
 
-<h3 id="从npm迁移"><a href="#从npm迁移" class="headerlink" title="从npm迁移"></a>从npm迁移</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">npm install === yarn</span><br><span class="line"></span><br><span class="line">pm install [package] --save === yarn add [package]</span><br><span class="line"></span><br><span class="line">npm install [package] --save-dev === yarn add [package] --dev</span><br><span class="line"></span><br><span class="line">npm install [package] --global === yarn global add [package]</span><br><span class="line"></span><br><span class="line">npm uninstall [package] --save === yarn remove [package]</span><br><span class="line"></span><br><span class="line">rm -rf node_modules &amp;&amp; npm install === yarn upgrade</span><br></pre></td></tr></table></figure>
+<h3 id="从-npm-迁移"><a href="#从-npm-迁移" class="headerlink" title="从 npm 迁移"></a>从 npm 迁移</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">npm install === yarn</span><br><span class="line"></span><br><span class="line">pm install [package] --save === yarn add [package]</span><br><span class="line"></span><br><span class="line">npm install [package] --save-dev === yarn add [package] --dev</span><br><span class="line"></span><br><span class="line">npm install [package] --global === yarn global add [package]</span><br><span class="line"></span><br><span class="line">npm uninstall [package] --save === yarn remove [package]</span><br><span class="line"></span><br><span class="line">rm -rf node_modules &amp;&amp; npm install === yarn upgrade</span><br></pre></td></tr></table></figure>
 
-<p><a href="https://yarn.bootcss.com" target="_blank" rel="noopener">yarn官网</a></p>
+<p><a href="https://yarn.bootcss.com" target="_blank" rel="noopener">yarn 官网</a></p>
 
           
             <div class='article_footer'>
@@ -502,10 +507,10 @@ yarn 快速、可靠、安全的依赖管理工具。">
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-06-01T22:42:49+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-06-02T10:47:25+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2020年6月1日</p>
+    <p>更新于：2020年6月2日</p>
   </a>
 </div>
 
@@ -617,7 +622,7 @@ touch ...</p>
 
 
     <div class='content'>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#🙄-为什么要用-yarn"><span class="toc-text">🙄 为什么要用 yarn</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#🧐-更新淘宝源"><span class="toc-text">🧐 更新淘宝源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#从npm迁移"><span class="toc-text">从npm迁移</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#看栗子说话"><span class="toc-text">看栗子说话</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#🙄-为什么要用-yarn"><span class="toc-text">🙄 为什么要用 yarn</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#🧐-更新淘宝源"><span class="toc-text">🧐 更新淘宝源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#从-npm-迁移"><span class="toc-text">从 npm 迁移</span></a></li></ol>
     </div>
   </section>
 
