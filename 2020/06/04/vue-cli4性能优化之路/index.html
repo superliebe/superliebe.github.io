@@ -5,8 +5,6 @@
   <!-- SEO相关 -->
   
     
-      <meta name="robots" content="noindex,follow">
-    
   
   <!-- 渲染优化 -->
   <meta name="renderer" content="webkit">
@@ -18,8 +16,13 @@
 
   <!-- 页面元数据 -->
   
-    <title>分类：Markdown - superKM的博客</title>
+    <title>vue-cli4性能优化之路 - superKM的博客</title>
   
+    <meta name="keywords" content="vue">
+  
+  
+    <meta name="description" content="
+vue 生产环境上的性能优化：开启 Gzip、去掉打包后的 console、图片懒加载等">
   
 
   <!-- feed -->
@@ -331,41 +334,26 @@
     <div class='body-wrapper'>
       
 
-
 <div class='l_main'>
   
-    
-      
-  <section class="post-list ">
-    
-      
-        
-          
-        
-      
-    
-    
-      
-        
-          <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
+
   
+    <article id="post" class="post white-box reveal shadow article-type-post" itemscope itemprop="blogPost">
+      
 
 
   <section class='meta'>
     
       
       
-        <a title='常用Markdown语法' href='/2020/05/24/%E5%B8%B8%E7%94%A8Markdown%E8%AF%AD%E6%B3%95/'><img class='thumbnail' src='https://img.vim-cn.com/17/0c7b02722686d1527a1df807dae0794d995860.png'></a>
-      
       <div class="meta" id="header-meta">
         
           
-  <h2 class="title">
-    <a href="/2020/05/24/%E5%B8%B8%E7%94%A8Markdown%E8%AF%AD%E6%B3%95/">
-      常用Markdown语法
+  <h1 class="title">
+    <a href="/2020/06/04/vue-cli4%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E4%B9%8B%E8%B7%AF/">
+      vue-cli4性能优化之路
     </a>
-  </h2>
+  </h1>
 
 
         
@@ -388,9 +376,9 @@
               
   
   <div class='new-meta-item category'>
-    <a href='/categories/Markdown/' rel="nofollow">
+    <a href='/categories/vue/' rel="nofollow">
       <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <p>Markdown</p>
+      <p>vue</p>
     </a>
   </div>
 
@@ -401,27 +389,9 @@
               <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2020年5月24日</p>
+    <p>发布于：2020年6月4日</p>
   </a>
 </div>
-
-            
-          
-            
-              
-  <div class="new-meta-item wordcount">
-    <a class='notlink'>
-      <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
-      <p>字数：1.2k字</p>
-    </a>
-  </div>
-  <div class="new-meta-item readtime">
-    <a class='notlink'>
-      <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
-      <p>时长：4分钟</p>
-    </a>
-  </div>
-
 
             
           
@@ -439,106 +409,105 @@
   </section>
 
 
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="https://s1.ax1x.com/2020/05/24/YzvhqJ.png" alt=""></p>
-<p>Markdown 是一种轻量级标记语言，它允许人们使用易读易写的纯文本格式编写文档</p>
-      
-    </div>
-    
-      
-        <div class="button readmore">
-          <a href="/2020/05/24/%E5%B8%B8%E7%94%A8Markdown%E8%AF%AD%E6%B3%95/">
-            阅读全文 <i class="fas fa-chevron-right"></i>
-          </a>
-        </div>
-      
-    
-  </section>
-</article>
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          <p><img src="https://s1.ax1x.com/2020/06/04/t0Rsk8.png" alt=""></p>
+<p>vue 生产环境上的性能优化：开启 Gzip、去掉打包后的 console、图片懒加载等</p>
+<a id="more"></a>
 
-          </div>
-        
-      
-    
-  </section>
+<h2 id="开启-Gzip-压缩模式"><a href="#开启-Gzip-压缩模式" class="headerlink" title="开启 Gzip 压缩模式"></a>开启 Gzip 压缩模式</h2><p>gizp 压缩是一种 http 请求优化方式，通过减少文件体积来提高加载速度，对于用户量多的网站，开启 gizp 压缩会大大降低服务器压力，提高加载速度，降低服务器流量成本</p>
+<blockquote>
+<p><strong>安装 compression-webpack-plugin 插件</strong></p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install compression-webpack-plugin --save-dev</span><br></pre></td></tr></table></figure>
+
+<p><strong>vue.config.js 配置 Gzip 压缩</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 导入compression-webpack-plugin</span></span><br><span class="line"><span class="keyword">const</span> CompressionWebpackPlugin = <span class="built_in">require</span>(<span class="string">"compression-webpack-plugin"</span>);</span><br><span class="line"><span class="comment">// 定义压缩文件类型</span></span><br><span class="line"><span class="keyword">const</span> productionGzipExtensions = [<span class="string">"js"</span>, <span class="string">"css"</span>];</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  <span class="comment">//统一配置打包插件</span></span><br><span class="line">  configureWebpack: &#123;</span><br><span class="line">    plugins: [</span><br><span class="line">      <span class="keyword">new</span> CompressionWebpackPlugin(&#123;</span><br><span class="line">        filename: <span class="string">"[path].gz[query]"</span>,</span><br><span class="line">        algorithm: <span class="string">"gzip"</span>,</span><br><span class="line">        test: <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"\\.("</span> + productionGzipExtensions.join(<span class="string">"|"</span>) + <span class="string">")$"</span>), <span class="comment">//匹配文件名</span></span><br><span class="line">        threshold: <span class="number">10240</span>, <span class="comment">//对10K以上的数据进行压缩</span></span><br><span class="line">        minRatio: <span class="number">0.8</span>,</span><br><span class="line">        deleteOriginalAssets: <span class="literal">false</span>, <span class="comment">//是否删除源文件</span></span><br><span class="line">      &#125;),</span><br><span class="line">    ],</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>npm run build 之后，对比之前的文件，平均压缩了 4 倍左右</p>
+<p><img src="https://s1.ax1x.com/2020/06/04/t0I3TI.png" alt="build.png"></p>
+<p>接下来在服务器的 nginx 上配置 Gzip</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">gzip</span> <span class="literal">on</span>; <span class="comment">#开启或关闭gzip on off</span></span><br><span class="line"><span class="attribute">gzip_min_length</span> <span class="number">5k</span>; <span class="comment">#gzip压缩最小文件大小，超出进行压缩（自行调节）</span></span><br><span class="line"><span class="attribute">gzip_buffers</span> <span class="number">4</span> <span class="number">16k</span>; <span class="comment">#buffer 不用修改</span></span><br><span class="line"><span class="attribute">gzip_comp_level</span> <span class="number">4</span>; <span class="comment">#压缩级别:1-10，数字越大压缩的越好，时间也越长</span></span><br><span class="line"><span class="attribute">gzip_types</span> text/plain application/x-javascript application/javascript text/css application/xml text/javascript application/x-httpd-php image/jpeg image/gif image/png; <span class="comment">#  压缩文件类型</span></span><br><span class="line"><span class="attribute">gzip_vary</span> <span class="literal">on</span>; <span class="comment"># 和http头有关系，加个vary头，给代理服务器用的，有的浏览器支持压缩，有的不支持，所以避免浪费不支持的也压缩，所以根据客户端的HTTP头来判断，是否需要压缩</span></span><br></pre></td></tr></table></figure>
+
+<p>修改后记得执行 <code>nginx -s reload</code></p>
+<p>一般浏览器都已支持.gz 的资源文件，在 http 请求的 Request Headers 中能看到 Accept-Encoding:gzip，加载速度会提升很大。</p>
+<p><img src="https://s1.ax1x.com/2020/06/04/t0TMdA.png" alt=""></p>
+<h2 id="去掉打包后的-console"><a href="#去掉打包后的-console" class="headerlink" title="去掉打包后的 console"></a>去掉打包后的 console</h2><blockquote>
+<p><strong>使用 babel-plugin-transform-remove-console 插件</strong></p>
+</blockquote>
+<p>安装依赖库</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install babel-plugin-transform-remove-<span class="built_in">console</span> --save-dev</span><br></pre></td></tr></table></figure>
+
+<p>【babel.config.js】配置如下</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> plugins = [<span class="string">"@vue/babel-plugin-transform-vue-jsx"</span>];</span><br><span class="line"><span class="comment">// 生产环境移除console</span></span><br><span class="line"><span class="keyword">if</span> (process.env.NODE_ENV === <span class="string">"production"</span>) &#123;</span><br><span class="line">  plugins.push(<span class="string">"transform-remove-console"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  plugins: plugins,</span><br><span class="line">  presets: [<span class="string">"@vue/cli-plugin-babel/preset"</span>],</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>打包部署后，生产环境的 console 就全部去掉了~</p>
+<h2 id="图片懒加载"><a href="#图片懒加载" class="headerlink" title="图片懒加载"></a>图片懒加载</h2><blockquote>
+<p><strong>使用 vue-lazyload</strong></p>
+</blockquote>
+<ul>
+<li>安装依赖</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm i vue-lazyload -S</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>main.js 中直接引用</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> VueLazyload <span class="keyword">from</span> <span class="string">"vue-lazyload"</span>;</span><br><span class="line"></span><br><span class="line">Vue.use(VueLazyload);</span><br><span class="line"></span><br><span class="line"><span class="comment">// or with options</span></span><br><span class="line">Vue.use(VueLazyload, &#123;</span><br><span class="line">  <span class="comment">//预加载高度</span></span><br><span class="line">  preLoad: <span class="number">1.3</span>,</span><br><span class="line">  <span class="comment">//错误时显示的图片</span></span><br><span class="line">  error: <span class="string">"static/about111.jpg"</span>,</span><br><span class="line">  <span class="comment">//图片加载中显示的图片</span></span><br><span class="line">  loading: <span class="string">"static/img/loading.gif"</span>,</span><br><span class="line">  <span class="comment">//尝试加载次数</span></span><br><span class="line">  attempt: <span class="number">1</span>,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>在组件中使用时，将 img 标签的 src 换成 v-lazy：</li>
+</ul>
+<ol>
+<li>未使用懒加载前的代码：</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"g-img1"</span> <span class="attr">src</span>=<span class="string">"static/1.jpg"</span> <span class="attr">alt</span>=<span class="string">""</span> /&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>使用懒加载后的代码：</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"g-img1"</span> <span class="attr">v-lazy</span>=<span class="string">"'static/1.jpg'"</span> <span class="attr">alt</span>=<span class="string">""</span> /&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+          
+            <div class='article_footer'>
+              
+                
   
     
-    <!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
     
-    
+
+
 
   
 
-
-    
-  
-
-</div>
-<aside class='l_side'>
-  
   
     
     
 
-<section class="widget blogger shadow desktop mobile">
+
+
+  
+
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
   <div class='content'>
     
-      
-        <a class='avatar flat-box' href='/about/'>
-          <img no-lazy src='http://oss.jishiyoo.com/images/file-1590255590991.jpg'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-          <h2>superKM</h2>
-        
-        
-        
-          <p><span id="jinrishici-sentence">superKM的博客</span></p>
-          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
+      <blockquote>
         
           
-            <a href="/atom.xml"
-              class="social fas fa-rss flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
+            <p>学无止境！奥里给！</p>
+
           
         
           
-            <a href="mailto:583902049@qq.com"
-              class="social fas fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
+            <p>本文永久链接是<a href=http://superliebe.github.io/2020/06/04/vue-cli4%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E4%B9%8B%E8%B7%AF/>http://superliebe.github.io/2020/06/04/vue-cli4%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E4%B9%8B%E8%B7%AF/</a></p>
           
         
-          
-            <a href="https://github.com/superliebe"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
-          
-        
-          
-            <a href="https://music.163.com/#/playlist?id=706943256"
-              class="social fas fa-headphones-alt flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
-          
-        
-      </div>
+      </blockquote>
     
   </div>
 </section>
@@ -548,68 +517,147 @@
   
     
     
+
+<section class="widget qrcode  desktop mobile">
   
 
-  <section class="widget category shadow desktop">
+  <div class='content article-entry'>
+    
+  </div>
+</section>
+
+  
+
+
+              
+            </div>
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-06-04T17:07:48+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2020年6月4日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/vue/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>vue</p></a></div>
+
+
+        
+      
+        
+          
+
+        
+      
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+          <div class="prev-next">
+            
+            
+              <a class='next' href='/2020/06/03/vue%E5%B8%B8%E7%94%A8%E5%B0%8F%E6%96%B9%E6%B3%95%E5%90%88%E9%9B%86/'>
+                <p class='title'>vue常用小方法合集<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>
+记录一下 vue 项目中经常使用的小方法
+
+
+一：获取 url 地址栏参数例如：/placeList?id=1;
+1this.$route.query.id(id为连接上的参数名称);
+
+二：...</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
+  
+
+  
+    <!-- 显示推荐文章和评论 -->
+
+
+
+  <article class="post white-box reveal comments shadow">
+    <section class="article typo">
+      <p ct><i class='fas fa-comments'></i> 评论</p>
+      
+      
+      
+      
+      
+      
+        <section id="comments">
+          <div id="valine_container" class="valine_thread">
+            <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+          </div>
+        </section>
+      
+      
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: 'vue-cli4性能优化之路',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+  
+
+  
+    
+    
+
+
+  <section class="widget toc-wrapper shadow desktop mobile">
     
   <header>
     
-      <a href='/blog/categories/'><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
     
   </header>
 
 
     <div class='content'>
-      <ul class="entry navigation">
-        
-          <li><a class="flat-box"
-            title="/categories/Markdown/" href="/categories/Markdown/"
-            id="categoriesMarkdown"
-            ><div class='name'>Markdown</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/vue/" href="/categories/vue/"
-            id="categoriesvue"
-            ><div class='name'>vue</div><div class='badge'>(4)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/vue/kbone/" href="/categories/vue/kbone/"
-            id="categoriesvuekbone"
-            ><div class='name'>kbone</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/vue/kbone/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" href="/categories/vue/kbone/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/"
-            id="categoriesvuekboneE5BEAEE4BFA1E5B08FE7A88BE5BA8F"
-            ><div class='name'>微信小程序</div><div class='badge'>(1)</div></a></li>
-        
-      </ul>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#开启-Gzip-压缩模式"><span class="toc-text">开启 Gzip 压缩模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#去掉打包后的-console"><span class="toc-text">去掉打包后的 console</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#图片懒加载"><span class="toc-text">图片懒加载</span></a></li></ol>
     </div>
   </section>
 
-
-  
-
-  
-    
-    
-  
-
-  <section class="widget tagcloud shadow desktop mobile">
-    
-  <header>
-    
-      <a href='/blog/tags/'><i class="fas fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-      <a href="/tags/Markdown/" style="font-size: 14px; color: #999">Markdown</a> <a href="/tags/kbone-vue/" style="font-size: 14px; color: #999">kbone,vue</a> <a href="/tags/linux/" style="font-size: 14px; color: #999">linux</a> <a href="/tags/npm-yarn/" style="font-size: 14px; color: #999">npm,yarn</a> <a href="/tags/vue/" style="font-size: 24px; color: #555">vue</a>
-    </div>
-  </section>
-
-
-  
 
   
 
@@ -822,6 +870,60 @@
 
 
 
+
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/valine@1.4/dist/Valine.min.js"></script>
+
+  
+  <script>
+  var GUEST_INFO = ['nick','mail','link'];
+  var meta = 'nick,mail,link'.split(',').filter(function(item){
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var REQUIRED_FIELDS = ['nick','mail','link'];
+  var requiredFields = 'nick,mail'.split(',').filter(function(item){
+    return REQUIRED_FIELDS.indexOf(item) > -1
+  });
+  var valine = new Valine();
+  function emoji(path, idx, ext) {
+      return path + "/" + path + "-" + idx + "." + ext;
+  }
+  var emojiMaps = {};
+  for (var i = 1; i <= 54; i++) {
+    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+  }
+  for (var i = 1; i <= 101; i++) {
+    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+  }
+  for (var i = 1; i <= 116; i++) {
+    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+  }
+  for (var i = 1; i <= 125; i++) {
+    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+  }
+  for (var i = 1; i <= 4; i++) {
+    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+  }
+  valine.init({
+    el: '#valine_container',
+    meta: meta,
+    
+    appId: "dogUA2FSKGTo029M1SEwGROT-MdYXbMMI",
+    appKey: "u0NdtQ8nvHoMdJPSYqm1LRxE",
+    placeholder: "快来评论吧~",
+    pageSize:'10',
+    avatar:'robohash',
+    lang:'zh-cn',
+    visitor: 'true',
+    highlight: 'true',
+    mathJax: 'false',
+    enableQQ: 'true',
+    requiredFields: requiredFields,
+    emojiCDN: 'https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/',
+    emojiMaps: emojiMaps
+  })
+  </script>
 
 
 
