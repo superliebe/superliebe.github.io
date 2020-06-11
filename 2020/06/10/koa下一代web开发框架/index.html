@@ -16,8 +16,13 @@
 
   <!-- 页面元数据 -->
   
-    <title>所有分类 - superKM的博客</title>
+    <title>koa2下一代web开发框架 - superKM的博客</title>
   
+    <meta name="keywords" content="nodejs,koa">
+  
+  
+    <meta name="description" content="
+next generation web framework for node.js">
   
 
   <!-- feed -->
@@ -329,65 +334,282 @@
     <div class='body-wrapper'>
       
 
-
 <div class='l_main'>
   
-    
-      <section class="post-list ">
-        <div class='post-wrapper'>
-          <article id="archive-page" class="post article white-box reveal shadow">
-            <section class="archive">
-              <div class="archive-item archive-year mark">
-                <h2>所有分类</h2>
-              </div>
-              <div class="archive-item archive-post mark all-categories">
-                
-                  
-                    <a class="" href="/categories/Markdown/">
-                      <time><i class='fas fa-folder-open fa-fw' aria-hidden="true"></i>&nbsp;&nbsp;Markdown</time>
-                      <span class="title">
-                        (1)
-                      </span>
-                    </a>
-                  
-                    <a class="" href="/categories/koa/">
-                      <time><i class='fas fa-folder-open fa-fw' aria-hidden="true"></i>&nbsp;&nbsp;koa</time>
-                      <span class="title">
-                        (1)
-                      </span>
-                    </a>
-                  
-                    <a class="" href="/categories/vue/">
-                      <time><i class='fas fa-folder-open fa-fw' aria-hidden="true"></i>&nbsp;&nbsp;vue</time>
-                      <span class="title">
-                        (4)
-                      </span>
-                    </a>
-                  
-                    <a class=" child" href="/categories/vue/kbone/">
-                      <time><i class='fas fa-folder-open fa-fw' aria-hidden="true"></i>&nbsp;&nbsp;kbone</time>
-                      <span class="title">
-                        (1)
-                      </span>
-                    </a>
-                  
-                    <a class=" child" href="/categories/vue/kbone/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
-                      <time><i class='fas fa-folder-open fa-fw' aria-hidden="true"></i>&nbsp;&nbsp;微信小程序</time>
-                      <span class="title">
-                        (1)
-                      </span>
-                    </a>
-                  
-                
-              </div>
-              <br>
-              
-            </section>
-          </article>
-        </div>
-      </section>
-    
+
   
+    <article id="post" class="post white-box reveal shadow article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+      
+      
+      <div class="meta" id="header-meta">
+        
+          
+  <h1 class="title">
+    <a href="/2020/06/10/koa%E4%B8%8B%E4%B8%80%E4%BB%A3web%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6/">
+      koa2下一代web开发框架
+    </a>
+  </h1>
+
+
+        
+        <div class='new-meta-box'>
+          
+            
+          
+            
+              
+<div class='new-meta-item author'>
+  <a href="" rel="nofollow">
+    <img src="http://oss.jishiyoo.com/images/file-1590246592360.png">
+    <p>superKM</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/koa/' rel="nofollow">
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <p>koa</p>
+    </a>
+  </div>
+
+
+            
+          
+            
+              <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2020年6月10日</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+
+            
+          
+        </div>
+        
+          <hr>
+        
+      </div>
+    
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          <p><img src="https://s1.ax1x.com/2020/06/10/tob9aD.png" alt=""></p>
+<p><strong>next generation web framework for node.js</strong></p>
+<a id="more"></a>
+
+<p><a href="https://www.koajs.com.cn" target="_blank" rel="noopener">koa官网</a></p>
+<p>先看一下 koa 的交互流程概念</p>
+<p><img src="https://s1.ax1x.com/2020/06/10/toXbcj.png" alt="koa核心概念"></p>
+<h3 id="koa的工作原理"><a href="#koa的工作原理" class="headerlink" title="koa的工作原理"></a>koa的工作原理</h3><p>koa中的中间件本质上就是一个async函数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> (ctx, next) =&gt; &#123;</span><br><span class="line">  <span class="keyword">await</span> next();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Koa 中间件的实现原理，也就是洋葱模型的实现原理，核心在于next的实现。next需要依次调用下一个middleware，当到最后一个的时候结束，这样后面middleware的promise先resolve，然后直到第一个，这样的流程也就是洋葱模型的流程了。</p>
+</blockquote>
+<p><img src="https://s1.ax1x.com/2020/06/10/tTpm1U.jpg" alt=""></p>
+<p>基本写法示例</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Koa = <span class="built_in">require</span>(<span class="string">'koa'</span>);</span><br><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> Koa();</span><br><span class="line"></span><br><span class="line">app.use(<span class="keyword">async</span> ctx =&gt; &#123;</span><br><span class="line">  ctx.body = <span class="string">'Hello World'</span>;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.listen(<span class="number">3000</span>);</span><br></pre></td></tr></table></figure>
+
+<p>打开浏览器 localhost:3000就可以看到Hello World</p>
+<h3 id="koa-router路由配置"><a href="#koa-router路由配置" class="headerlink" title="koa-router路由配置"></a>koa-router路由配置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm i -D koa-router</span><br></pre></td></tr></table></figure>
+
+<p>引入路由组件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Router <span class="keyword">from</span> <span class="string">'koa-router'</span></span><br><span class="line"><span class="comment">// 或者</span></span><br><span class="line"><span class="comment">// const Router = require('koa-router');</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义router</span></span><br><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> Router();</span><br><span class="line"></span><br><span class="line"><span class="comment">//创建一个get方法</span></span><br><span class="line">router.get(<span class="string">'/api'</span>,ctx=&gt;&#123;</span><br><span class="line">    ctx.body = <span class="string">'hello api!'</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//router.prefix添加接口前缀</span></span><br><span class="line">router.prefix(<span class="string">'/api'</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="路由组建压缩"><a href="#路由组建压缩" class="headerlink" title="路由组建压缩"></a>路由组建压缩</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm i -S koa-combine-routers</span><br></pre></td></tr></table></figure>
+
+<h3 id="添加安全头部-koa-helmet"><a href="#添加安全头部-koa-helmet" class="headerlink" title="添加安全头部 koa-helmet"></a>添加安全头部 koa-helmet</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm i -S koa-helmet</span><br></pre></td></tr></table></figure>
+
+<h3 id="添加静态文件-koa-static"><a href="#添加静态文件-koa-static" class="headerlink" title="添加静态文件 koa-static"></a>添加静态文件 koa-static</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm i -S koa-static</span><br></pre></td></tr></table></figure>
+
+<h3 id="koa-body协议解析"><a href="#koa-body协议解析" class="headerlink" title="koa-body协议解析"></a>koa-body协议解析</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cnpm i koa-body</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用方法，直接use即可</span></span><br><span class="line"><span class="keyword">const</span> koaBody = <span class="built_in">require</span>(<span class="string">'koa-body'</span>);</span><br><span class="line"></span><br><span class="line">app.use(koaBody());</span><br></pre></td></tr></table></figure>
+
+<h3 id="koa-cors跨域处理"><a href="#koa-cors跨域处理" class="headerlink" title="@koa/cors跨域处理"></a>@koa/cors跨域处理</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cnpm i @koa/cors</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用方法，直接use即可</span></span><br><span class="line"><span class="keyword">const</span> cors = <span class="built_in">require</span>(<span class="string">'@koa/cors'</span>);</span><br><span class="line"> </span><br><span class="line">app.use(cors());</span><br></pre></td></tr></table></figure>
+
+<h3 id="配置koa的热加载-nodemon"><a href="#配置koa的热加载-nodemon" class="headerlink" title="配置koa的热加载 nodemon"></a>配置koa的热加载 nodemon</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm i - D nodemon</span><br></pre></td></tr></table></figure>
+
+<p>使用<code>npx nodemon src/index.js</code> 监听文件内容变化，实现热更新</p>
+
+          
+            <div class='article_footer'>
+              
+                
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
+  <div class='content'>
+    
+      <blockquote>
+        
+          
+            <p>学无止境！奥里给！</p>
+
+          
+        
+          
+            <p>本文永久链接是<a href=http://superliebe.github.io/2020/06/10/koa%E4%B8%8B%E4%B8%80%E4%BB%A3web%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6/>http://superliebe.github.io/2020/06/10/koa%E4%B8%8B%E4%B8%80%E4%BB%A3web%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6/</a></p>
+          
+        
+      </blockquote>
+    
+  </div>
+</section>
+
+  
+
+  
+    
+    
+
+<section class="widget qrcode  desktop mobile">
+  
+
+  <div class='content article-entry'>
+    
+  </div>
+</section>
+
+  
+
+
+              
+            </div>
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-06-11T17:58:16+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2020年6月11日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/nodejs-koa/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>nodejs,koa</p></a></div>
+
+
+        
+      
+        
+          
+
+        
+      
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+          <div class="prev-next">
+            
+            
+              <a class='next' href='/2020/06/04/vue-cli4%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E4%B9%8B%E8%B7%AF/'>
+                <p class='title'>vue-cli4性能优化之路<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>
+vue 生产环境上的性能优化：开启 Gzip、去掉打包后的 console、图片懒加载等
+
+
+开启 Gzip 压缩模式gizp 压缩是一种 http 请求优化方式，通过减少文件体积来提高加载速...</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
+  
+
+  
+    <!-- 显示推荐文章和评论 -->
+
+
+
+  <article class="post white-box reveal comments shadow">
+    <section class="article typo">
+      <p ct><i class='fas fa-comments'></i> 评论</p>
+      
+      
+      
+      
+      
+      
+        <section id="comments">
+          <div id="valine_container" class="valine_thread">
+            <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+          </div>
+        </section>
+      
+      
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: 'koa2下一代web开发框架',
+      tools: true
+    }
+  </script>
+
 
 </div>
 <aside class='l_side'>
@@ -398,6 +620,20 @@
     
     
 
+
+  <section class="widget toc-wrapper shadow desktop mobile">
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#koa的工作原理"><span class="toc-text">koa的工作原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#koa-router路由配置"><span class="toc-text">koa-router路由配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#路由组建压缩"><span class="toc-text">路由组建压缩</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加安全头部-koa-helmet"><span class="toc-text">添加安全头部 koa-helmet</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加静态文件-koa-static"><span class="toc-text">添加静态文件 koa-static</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#koa-body协议解析"><span class="toc-text">koa-body协议解析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#koa-cors跨域处理"><span class="toc-text">@koa&#x2F;cors跨域处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置koa的热加载-nodemon"><span class="toc-text">配置koa的热加载 nodemon</span></a></li></ol>
+    </div>
+  </section>
 
 
   
@@ -611,6 +847,60 @@
 
 
 
+
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/valine@1.4/dist/Valine.min.js"></script>
+
+  
+  <script>
+  var GUEST_INFO = ['nick','mail','link'];
+  var meta = 'nick,mail,link'.split(',').filter(function(item){
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var REQUIRED_FIELDS = ['nick','mail','link'];
+  var requiredFields = 'nick,mail'.split(',').filter(function(item){
+    return REQUIRED_FIELDS.indexOf(item) > -1
+  });
+  var valine = new Valine();
+  function emoji(path, idx, ext) {
+      return path + "/" + path + "-" + idx + "." + ext;
+  }
+  var emojiMaps = {};
+  for (var i = 1; i <= 54; i++) {
+    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+  }
+  for (var i = 1; i <= 101; i++) {
+    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+  }
+  for (var i = 1; i <= 116; i++) {
+    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+  }
+  for (var i = 1; i <= 125; i++) {
+    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+  }
+  for (var i = 1; i <= 4; i++) {
+    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+  }
+  valine.init({
+    el: '#valine_container',
+    meta: meta,
+    
+    appId: "dogUA2FSKGTo029M1SEwGROT-MdYXbMMI",
+    appKey: "u0NdtQ8nvHoMdJPSYqm1LRxE",
+    placeholder: "快来评论吧~",
+    pageSize:'10',
+    avatar:'robohash',
+    lang:'zh-cn',
+    visitor: 'true',
+    highlight: 'true',
+    mathJax: 'false',
+    enableQQ: 'true',
+    requiredFields: requiredFields,
+    emojiCDN: 'https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/',
+    emojiMaps: emojiMaps
+  })
+  </script>
 
 
 
