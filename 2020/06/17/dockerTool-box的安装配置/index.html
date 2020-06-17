@@ -16,7 +16,7 @@
 
   <!-- 页面元数据 -->
   
-    <title>dockerToolbox的安装配置 - superKM的博客</title>
+    <title>dockerToolbox的安装、配置镜像 - superKM的博客</title>
   
     <meta name="keywords" content="docker">
   
@@ -351,7 +351,7 @@
           
   <h1 class="title">
     <a href="/2020/06/17/dockerTool-box%E7%9A%84%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/">
-      dockerToolbox的安装配置
+      dockerToolbox的安装、配置镜像
     </a>
   </h1>
 
@@ -415,14 +415,15 @@
           <p><img src="https://s1.ax1x.com/2020/06/17/NEy0ij.png" alt=""></p>
 <p>作为一种新兴的虚拟化方式，Docker 跟传统的虚拟化方式相比具有众多的优势。</p>
 <a id="more"></a>
-<h3 id="docker的基本介绍"><a href="#docker的基本介绍" class="headerlink" title="docker的基本介绍"></a>docker的基本介绍</h3><p>首先，Docker 容器的启动可以在秒级实现，这相比传统的虚拟机方式要快得多。其次，Docker 对系统资源的利用率很高，一台主机上可以同时运行数千个 Docker 容器。</p>
-<p>容器除了运行其中应用外，基本不消耗额外的系统资源，使得应用的性能很高，同时系统的开销尽量小。传统虚拟机方式运行 10 个不同的应用就要起 10 个虚拟机，而Docker 只需要启动 10 个隔离的应用即可。</p>
+
+<h3 id="docker-的基本介绍"><a href="#docker-的基本介绍" class="headerlink" title="docker 的基本介绍"></a>docker 的基本介绍</h3><p>首先，Docker 容器的启动可以在秒级实现，这相比传统的虚拟机方式要快得多。其次，Docker 对系统资源的利用率很高，一台主机上可以同时运行数千个 Docker 容器。</p>
+<p>容器除了运行其中应用外，基本不消耗额外的系统资源，使得应用的性能很高，同时系统的开销尽量小。传统虚拟机方式运行 10 个不同的应用就要起 10 个虚拟机，而 Docker 只需要启动 10 个隔离的应用即可。</p>
 <p>docker 与 传统虚拟机相比</p>
 <table>
 <thead>
 <tr>
 <th>特性</th>
-<th>docker容器</th>
+<th>docker 容器</th>
 <th>虚拟机</th>
 </tr>
 </thead>
@@ -442,17 +443,40 @@
 <td>一般几十个</td>
 </tr>
 </tbody></table>
-<h3 id="DockerToolbox安装docker"><a href="#DockerToolbox安装docker" class="headerlink" title="DockerToolbox安装docker"></a>DockerToolbox安装docker</h3><p><a href="https://www.docker.com" target="_blank" rel="noopener">docker官网</a></p>
-<p>win7、win8，非win10专业版等需要利用 docker toolbox 来安装，国内可以使用阿里云的镜像来下载，下载地址：<a href="http://mirrors.aliyun.com/docker-toolbox/windows/docker-toolbox/" target="_blank" rel="noopener">http://mirrors.aliyun.com/docker-toolbox/windows/docker-toolbox/</a></p>
+<h3 id="DockerToolbox-安装-docker"><a href="#DockerToolbox-安装-docker" class="headerlink" title="DockerToolbox 安装 docker"></a>DockerToolbox 安装 docker</h3><p><a href="https://www.docker.com" target="_blank" rel="noopener">docker 官网</a></p>
+<p>win7、win8，非 win10 专业版等需要利用 docker toolbox 来安装，国内可以使用阿里云的镜像来下载，下载地址：<a href="http://mirrors.aliyun.com/docker-toolbox/windows/docker-toolbox/" target="_blank" rel="noopener">http://mirrors.aliyun.com/docker-toolbox/windows/docker-toolbox/</a></p>
 <p><img src="https://s1.ax1x.com/2020/06/17/NERd8H.png" alt=""></p>
 <p>选择需要的服务，进行下一步安装</p>
 <p>安装成功后，桌面会显示启动图标，双击运行<br><img src="https://s1.ax1x.com/2020/06/17/NE43WD.png" alt=""></p>
-<p>如果运行成功，进入docker</p>
+<p>如果运行成功，进入 docker</p>
 <p><img src="https://s1.ax1x.com/2020/06/17/NEWUe0.md.png" alt=""></p>
 <p>如果失败，请看下方安装问题</p>
-<h3 id="安装问题"><a href="#安装问题" class="headerlink" title="安装问题"></a>安装问题</h3><p>双击Docker Quickstart Terminal，提示windows 正在查找bash.exe。如果想亲自查找文件，请点击“浏览”。</p>
-<p><strong>问题原因</strong><br>一般出现这个问题，是因为之前已经安装过了git，且bash.exe的路径与Docker Toolbox中不一致导致的。</p>
-<p><strong>解决办法</strong><br>右击Docker Quickstart Terminal的图标，修改前一段bash的路径为本机git安装路径。</p>
+<h3 id="docker-toolbox-环境下-使用阿里云容器镜像加速器"><a href="#docker-toolbox-环境下-使用阿里云容器镜像加速器" class="headerlink" title="docker toolbox 环境下 使用阿里云容器镜像加速器"></a>docker toolbox 环境下 使用阿里云容器镜像加速器</h3><ul>
+<li>在 Docker Quickstart Terminal 命令行输入命令：</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-machine ssh <span class="keyword">default</span></span><br></pre></td></tr></table></figure>
+
+<p>意思是采用 docker-machine 命令，以 ssh 方式，从当前 Docker Quickstart Terminal 窗口登录名称为 default 的 docker 虚拟机</p>
+<ul>
+<li>此时窗口进入到了 docker 虚拟机，docker-machine 命令已经失效。linux 命令生效。</li>
+</ul>
+<p>输入 <code>cat /var/lib/boot2docker/profile</code></p>
+<p>查看当前配置文件，其中第一句中</p>
+<p><code>EXTRA_ARGS=&#39;--registry-mirror=http://******.io</code></p>
+<p>registry-mirror=后的网址即为当前镜像地址。</p>
+<ul>
+<li>使用如下命令即可改为阿里云镜像地址</li>
+</ul>
+<p><code>sudo sed -i &quot;s|EXTRA_ARGS=&#39;|EXTRA_ARGS=&#39;--registry-mirror=镜像地址 |g&quot; /var/lib/boot2docker/profile</code></p>
+<p>添加后输入<code>exit</code></p>
+<p>退出 docker@default</p>
+<p>重启docker-machine <code>docker-machine restart default</code></p>
+<p>输入<code>docker info</code>查看镜像配置，registry 中可以看到配置的镜像</p>
+<p><img src="https://s1.ax1x.com/2020/06/18/NZNZNt.png" alt="NZNZNt.png"></p>
+<p>注意：需要登录阿里云容器镜像服务，获取自己的加速地址,<a href="https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors" target="_blank" rel="noopener">点击进入阿里云镜像服务</a></p>
+<h3 id="安装问题"><a href="#安装问题" class="headerlink" title="安装问题"></a>安装问题</h3><p>双击 Docker Quickstart Terminal，提示 windows 正在查找 bash.exe。如果想亲自查找文件，请点击“浏览”。</p>
+<p><strong>问题原因</strong><br>一般出现这个问题，是因为之前已经安装过了 git，且 bash.exe 的路径与 Docker Toolbox 中不一致导致的。</p>
+<p><strong>解决办法</strong><br>右击 Docker Quickstart Terminal 的图标，修改前一段 bash 的路径为本机 git 安装路径。</p>
 <p><img src="https://s1.ax1x.com/2020/06/17/NE5Qns.png" alt=""></p>
 
           
@@ -527,10 +551,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-06-17T23:34:55+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-06-18T00:16:05+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2020年6月17日</p>
+    <p>更新于：2020年6月18日</p>
   </a>
 </div>
 
@@ -614,7 +638,7 @@ koa的工作原理koa中的中间件本质上就是一个async...</p>
 
   <script>
     window.subData = {
-      title: 'dockerToolbox的安装配置',
+      title: 'dockerToolbox的安装、配置镜像',
       tools: true
     }
   </script>
@@ -640,7 +664,7 @@ koa的工作原理koa中的中间件本质上就是一个async...</p>
 
 
     <div class='content'>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#docker的基本介绍"><span class="toc-text">docker的基本介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DockerToolbox安装docker"><span class="toc-text">DockerToolbox安装docker</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装问题"><span class="toc-text">安装问题</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#docker-的基本介绍"><span class="toc-text">docker 的基本介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DockerToolbox-安装-docker"><span class="toc-text">DockerToolbox 安装 docker</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#docker-toolbox-环境下-使用阿里云容器镜像加速器"><span class="toc-text">docker toolbox 环境下 使用阿里云容器镜像加速器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装问题"><span class="toc-text">安装问题</span></a></li></ol>
     </div>
   </section>
 
