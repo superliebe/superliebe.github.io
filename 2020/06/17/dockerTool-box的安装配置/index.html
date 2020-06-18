@@ -470,14 +470,29 @@
 <p><code>sudo sed -i &quot;s|EXTRA_ARGS=&#39;|EXTRA_ARGS=&#39;--registry-mirror=镜像地址 |g&quot; /var/lib/boot2docker/profile</code></p>
 <p>添加后输入<code>exit</code></p>
 <p>退出 docker@default</p>
-<p>重启docker-machine <code>docker-machine restart default</code></p>
+<p>重启 docker-machine <code>docker-machine restart default</code></p>
 <p>输入<code>docker info</code>查看镜像配置，registry 中可以看到配置的镜像</p>
 <p><img src="https://s1.ax1x.com/2020/06/18/NZNZNt.png" alt="NZNZNt.png"></p>
 <p>注意：需要登录阿里云容器镜像服务，获取自己的加速地址,<a href="https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors" target="_blank" rel="noopener">点击进入阿里云镜像服务</a></p>
-<h3 id="安装问题"><a href="#安装问题" class="headerlink" title="安装问题"></a>安装问题</h3><p>双击 Docker Quickstart Terminal，提示 windows 正在查找 bash.exe。如果想亲自查找文件，请点击“浏览”。</p>
+<h3 id="安装问题"><a href="#安装问题" class="headerlink" title="安装问题"></a>安装问题</h3><p><strong>问题一</strong></p>
+<p>双击 Docker Quickstart Terminal，提示 windows 正在查找 bash.exe。如果想亲自查找文件，请点击“浏览”。</p>
 <p><strong>问题原因</strong><br>一般出现这个问题，是因为之前已经安装过了 git，且 bash.exe 的路径与 Docker Toolbox 中不一致导致的。</p>
 <p><strong>解决办法</strong><br>右击 Docker Quickstart Terminal 的图标，修改前一段 bash 的路径为本机 git 安装路径。</p>
 <p><img src="https://s1.ax1x.com/2020/06/17/NE5Qns.png" alt=""></p>
+<p><strong>问题二</strong></p>
+<p>配置了镜像加速后，重启电脑，通过 docker info 查看镜像又成了原来默认的地址</p>
+<p><strong>解决方法</strong></p>
+<p>如果你创建主机了就先删除默认的虚拟机</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-machine rm <span class="keyword">default</span></span><br></pre></td></tr></table></figure>
+
+<p>打开 docker 安装目录，编辑 start.sh 文件（如果你 docker 创建主机了你修改之后要删除主机 重新创建一台）</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"$&#123;DOCKER_MACHINE&#125;"</span> create -d virtualbox $PROXY_ENV <span class="string">"$&#123;VM&#125;"</span></span><br></pre></td></tr></table></figure>
+
+<p>改成</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"$&#123;DOCKER_MACHINE&#125;"</span> create --engine-registry-mirror=https:<span class="comment">//你的阿里云地址 -d virtualbox $PROXY_ENV "$&#123;VM&#125;"</span></span><br></pre></td></tr></table></figure>
+
+<p>运行Docker Quickstart Termin</p>
+<p>通过 docker info 查看镜像地址 就再也不会改变啦，可以开开心心的push了~</p>
 
           
             <div class='article_footer'>
@@ -551,7 +566,7 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-06-18T00:16:05+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-06-18T21:45:54+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：2020年6月18日</p>
