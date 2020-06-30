@@ -489,7 +489,7 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"$&#123;DOCKER_MACHINE&#125;"</span> create -d virtualbox $PROXY_ENV <span class="string">"$&#123;VM&#125;"</span></span><br></pre></td></tr></table></figure>
 
 <p>改成</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"$&#123;DOCKER_MACHINE&#125;"</span> create --engine-registry-mirror=https:<span class="comment">//你的阿里云地址 -d virtualbox $PROXY_ENV "$&#123;VM&#125;"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"$&#123;DOCKER_MACHINE&#125;"</span> create --engine-registry-mirror=你的阿里云地址 -d virtualbox $PROXY_ENV <span class="string">"$&#123;VM&#125;"</span></span><br></pre></td></tr></table></figure>
 
 <p>运行Docker Quickstart Termin</p>
 <p>通过 docker info 查看镜像地址 就再也不会改变啦，可以开开心心的push了~</p>
@@ -566,10 +566,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-06-18T21:45:54+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-06-19T09:30:26+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2020年6月18日</p>
+    <p>更新于：2020年6月19日</p>
   </a>
 </div>
 
@@ -597,6 +597,23 @@
         
         
           <div class="prev-next">
+            
+              <a class='prev' href='/2020/06/18/docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%93%8D%E4%BD%9C/'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>docker常用命令操作</p>
+                <p class='content'>
+docker 常用命令小字典
+
+
+
+查看运行中的容器
+
+12docker ps //查看运行中docker ps -a //查看所有运行过+进行中的镜像
+
+
+删除容器
+
+如果容器正在运行中，是...</p>
+              </a>
             
             
               <a class='next' href='/2020/06/10/koa%E4%B8%8B%E4%B8%80%E4%BB%A3web%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6/'>
