@@ -416,42 +416,48 @@ docker 常用命令小字典">
 <p>docker 常用命令小字典</p>
 <a id="more"></a>
 
-<ul>
-<li>查看运行中的容器</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker ps <span class="comment">//查看运行中</span></span><br><span class="line">docker ps -a <span class="comment">//查看所有运行过+进行中的镜像</span></span><br></pre></td></tr></table></figure>
+<h3 id="镜像命令"><a href="#镜像命令" class="headerlink" title="镜像命令"></a>镜像命令</h3><h4 id="版本信息"><a href="#版本信息" class="headerlink" title="版本信息"></a>版本信息</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker version</span><br></pre></td></tr></table></figure>
 
-<ul>
-<li>删除容器</li>
-</ul>
-<p>如果容器正在运行中，是不能使用 rm 这个命令的</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rm 容器名</span><br></pre></td></tr></table></figure>
+<h4 id="系统信息，镜像和容器数量"><a href="#系统信息，镜像和容器数量" class="headerlink" title="系统信息，镜像和容器数量"></a>系统信息，镜像和容器数量</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker info</span><br></pre></td></tr></table></figure>
 
-<ul>
-<li>停止容器</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker stop 容器名</span><br></pre></td></tr></table></figure>
+<h4 id="查看所有本地主机上的镜像"><a href="#查看所有本地主机上的镜像" class="headerlink" title="查看所有本地主机上的镜像"></a>查看所有本地主机上的镜像</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">docker images</span><br><span class="line"></span><br><span class="line"><span class="comment"># 可选项</span></span><br><span class="line"></span><br><span class="line">-a , --all     <span class="comment">#列出所有镜像</span></span><br><span class="line">-q , --quiet   <span class="comment">#只显示镜像的id</span></span><br></pre></td></tr></table></figure>
 
-<ul>
-<li>启动容器</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker start 容器名</span><br></pre></td></tr></table></figure>
+<h4 id="搜索镜像"><a href="#搜索镜像" class="headerlink" title="搜索镜像"></a>搜索镜像</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker search mysql</span><br></pre></td></tr></table></figure>
 
-<ul>
-<li>持续打印日志</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker logs -f 容器名</span><br></pre></td></tr></table></figure>
+<h4 id="下载镜像"><a href="#下载镜像" class="headerlink" title="下载镜像"></a>下载镜像</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">docker pull mysql</span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果不写版本，默认使用latest最新版本</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 指定版本下载</span></span><br><span class="line"></span><br><span class="line">docker pull mysql:5.7</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出</span></span><br><span class="line">latest: Pulling from library/mysql</span><br><span class="line">8559a31e96f4: Pull complete <span class="comment"># 分层下载。docker的核心联合文件系统</span></span><br><span class="line">Digest: sha256:8b7b328a7ff6de46ef96bcf83af048cb00a1c86282bfca0cb119c84568b4caf6 <span class="comment">#签名</span></span><br><span class="line">Status: Downloaded newer image <span class="keyword">for</span> mysql:latest <span class="comment">#真实地址</span></span><br></pre></td></tr></table></figure>
 
-<ul>
-<li>登录 docker hub</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker login</span><br></pre></td></tr></table></figure>
+<h4 id="删除镜像"><a href="#删除镜像" class="headerlink" title="删除镜像"></a>删除镜像</h4><p>如果容器正在运行中，是不能使用 rmi 这个命令的</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker rmi 镜像名           <span class="comment"># 删除镜像</span></span><br><span class="line">docker rmi -f 镜像id        <span class="comment"># 根据id删除镜像</span></span><br><span class="line">docker rmi -f $(docker -aq) <span class="comment"># 删除全部镜像</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="容器命令"><a href="#容器命令" class="headerlink" title="容器命令"></a>容器命令</h3><p>说明：有了镜像才可以创建容器</p>
+<h4 id="新建容器并启动"><a href="#新建容器并启动" class="headerlink" title="新建容器并启动"></a>新建容器并启动</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">docker pull centos <span class="comment"># 下载centos镜像</span></span><br><span class="line"></span><br><span class="line">docker run [可选参数] image</span><br><span class="line"></span><br><span class="line"><span class="comment"># 参数说明</span></span><br><span class="line"></span><br><span class="line">--m = <span class="string">"name"</span>    <span class="comment"># 容器名字，用来区分容器</span></span><br><span class="line">-d              <span class="comment"># 后台运行</span></span><br><span class="line">-it         <span class="comment"># 使用交互方式运行，进入容器查看内容</span></span><br><span class="line">-P              <span class="comment"># 指定容器的端口</span></span><br><span class="line">                <span class="comment"># -p 8080(主机端口):8080（容器端口）</span></span><br><span class="line">-p              <span class="comment"># 随机容器的端口</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 测试，启动centos并进入</span></span><br><span class="line">$ docker run -it centos /bin/bash</span><br><span class="line">[root@f8ed75f63bcc /]<span class="comment"># ls   #查看容器内的centos</span></span><br><span class="line">bin  dev  etc  home  lib  lib64  lost+found  media  mnt  opt  proc...</span><br><span class="line"></span><br><span class="line"><span class="comment">#从容器中退回主机</span></span><br><span class="line">[root@f8ed75f63bcc /]<span class="comment"># exit</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="查看运行中的容器"><a href="#查看运行中的容器" class="headerlink" title="查看运行中的容器"></a>查看运行中的容器</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker ps       <span class="comment"># 查看运行中</span></span><br><span class="line">docker ps -a    <span class="comment"># 查看所有运行过+进行中的容器</span></span><br><span class="line">docker ps -n=2  <span class="comment"># 显示最近正在运行的容器</span></span><br><span class="line">docker ps -aq   <span class="comment"># 显示所有运行过+进行中的容器的id</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="删除容器"><a href="#删除容器" class="headerlink" title="删除容器"></a>删除容器</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker rm 容器id     <span class="comment">#删除指定容器,不能删除正在运行的</span></span><br><span class="line">docker rm -f $(docker ps -aq)  <span class="comment">#删除所有容器，强制删除</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="退出容器"><a href="#退出容器" class="headerlink" title="退出容器"></a>退出容器</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">exit</span>        <span class="comment"># 直接停止并退出</span></span><br><span class="line">Ctrl+P+Q    <span class="comment">#容器不停止退出</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="启动容器"><a href="#启动容器" class="headerlink" title="启动容器"></a>启动容器</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker start 容器id    <span class="comment"># 启动</span></span><br><span class="line">docker restart 容器id  <span class="comment"># 重启</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="停止容器"><a href="#停止容器" class="headerlink" title="停止容器"></a>停止容器</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker stop 容器id     <span class="comment"># 停止</span></span><br><span class="line">docker <span class="built_in">kill</span> 容器id     <span class="comment"># 杀死</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="常用其他命令"><a href="#常用其他命令" class="headerlink" title="常用其他命令"></a>常用其他命令</h3><h4 id="后台启动"><a href="#后台启动" class="headerlink" title="后台启动"></a>后台启动</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker run -d 镜像名</span><br><span class="line"></span><br><span class="line"><span class="comment"># 常见问题：docker容器使用后台运行，就必须拥有前台进程，docker发现没有应用就会自动停止</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="持续打印日志"><a href="#持续打印日志" class="headerlink" title="持续打印日志"></a>持续打印日志</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker logs -tf --tail 10 容器名</span><br></pre></td></tr></table></figure>
+
+<h4 id="查看-docker-容器内部的进程信息"><a href="#查看-docker-容器内部的进程信息" class="headerlink" title="查看 docker 容器内部的进程信息"></a>查看 docker 容器内部的进程信息</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker top 容器id</span><br></pre></td></tr></table></figure>
+
+<h4 id="查看容器元数据"><a href="#查看容器元数据" class="headerlink" title="查看容器元数据"></a>查看容器元数据</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker inspect 容器id</span><br></pre></td></tr></table></figure>
+
+<h4 id="进入当前正在运行的容器"><a href="#进入当前正在运行的容器" class="headerlink" title="进入当前正在运行的容器"></a>进入当前正在运行的容器</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 我们容器通常是使用后台运行的，需要进入容器，修改一些配置</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 命令</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 进入容器后开启一个新的终端，可以在里面操作</span></span><br><span class="line">docker <span class="built_in">exec</span> -it 容器id + 默认命令行（/bin/bash）</span><br><span class="line"></span><br><span class="line"><span class="comment"># 进入容器正在执行的终端，不会启动新进程</span></span><br><span class="line">docker attach 容器id</span><br></pre></td></tr></table></figure>
+
+<h4 id="从文件内容拷贝到主机"><a href="#从文件内容拷贝到主机" class="headerlink" title="从文件内容拷贝到主机"></a>从文件内容拷贝到主机</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker cp 容器id:容器内路径 目的的主机路径</span><br></pre></td></tr></table></figure>
+
+<h4 id="登录-docker-hub"><a href="#登录-docker-hub" class="headerlink" title="登录 docker hub"></a>登录 docker hub</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker login</span><br></pre></td></tr></table></figure>
 
 <p>输入 账号密码回车即可</p>
-<ul>
-<li>下载镜像</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull 名称</span><br></pre></td></tr></table></figure>
+
           
             <div class='article_footer'>
               
@@ -524,10 +530,10 @@ docker 常用命令小字典">
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-06-22T21:30:32+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-07-02T23:35:01+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2020年6月22日</p>
+    <p>更新于：2020年7月2日</p>
   </a>
 </div>
 
@@ -565,11 +571,10 @@ docker 常用命令小字典">
             
               <a class='next' href='/2020/06/17/dockerTool-box%E7%9A%84%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/'>
                 <p class='title'>dockerToolbox的安装、配置镜像<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-                <p class='content'>
-作为一种新兴的虚拟化方式，Docker 跟传统的虚拟化方式相比具有众多的优势。
+                <p class='content'>作为一种新兴的虚拟化方式，Docker 跟传统的虚拟化方式相比具有众多的优势。
 
 
-docker 的基本介绍首先，Docker 容器的启动可以在秒级实现，这相比传统的虚拟机方式要快得多。其次，...</p>
+docker 的基本介绍首先，Docker 容器的启动可以在秒级实现，这相比传统的虚拟机方式要快得多。其次，D...</p>
               </a>
             
           </div>
@@ -629,6 +634,20 @@ docker 的基本介绍首先，Docker 容器的启动可以在秒级实现，这
     
     
 
+
+  <section class="widget toc-wrapper shadow desktop mobile">
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#镜像命令"><span class="toc-text">镜像命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#版本信息"><span class="toc-text">版本信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#系统信息，镜像和容器数量"><span class="toc-text">系统信息，镜像和容器数量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#查看所有本地主机上的镜像"><span class="toc-text">查看所有本地主机上的镜像</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#搜索镜像"><span class="toc-text">搜索镜像</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#下载镜像"><span class="toc-text">下载镜像</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#删除镜像"><span class="toc-text">删除镜像</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#容器命令"><span class="toc-text">容器命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#新建容器并启动"><span class="toc-text">新建容器并启动</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#查看运行中的容器"><span class="toc-text">查看运行中的容器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#删除容器"><span class="toc-text">删除容器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#退出容器"><span class="toc-text">退出容器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#启动容器"><span class="toc-text">启动容器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#停止容器"><span class="toc-text">停止容器</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常用其他命令"><span class="toc-text">常用其他命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#后台启动"><span class="toc-text">后台启动</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#持续打印日志"><span class="toc-text">持续打印日志</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#查看-docker-容器内部的进程信息"><span class="toc-text">查看 docker 容器内部的进程信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#查看容器元数据"><span class="toc-text">查看容器元数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#进入当前正在运行的容器"><span class="toc-text">进入当前正在运行的容器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#从文件内容拷贝到主机"><span class="toc-text">从文件内容拷贝到主机</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#登录-docker-hub"><span class="toc-text">登录 docker hub</span></a></li></ol></li></ol>
+    </div>
+  </section>
 
 
   
