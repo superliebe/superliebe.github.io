@@ -4,11 +4,11 @@
   
     
     <entry>
-      <title>docker常用命令操作、容器卷使用、dockefile等</title>
+      <title>dockefile的使用</title>
       <link href="/2020/07/09/dockerfile%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
       <url>/2020/07/09/dockerfile%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<p><img src="https://s1.ax1x.com/2020/07/09/UnyB0U.png" alt=""></p><a id="more"></a><p>docker 是用来构建 docker 镜像文件，命令参数的脚本。</p><p>构建步骤</p><ol><li>编写一个 dockerfile 文件。</li><li>docker build 构建成为一个镜像。</li><li>docker run 运行镜像。</li><li>docker push 发布镜像（dockerhub , 阿里云仓库）。</li></ol><p>很多官方镜像都是基础包，很多功能没有，我们通常会自己搭建自己的镜像！</p><h3 id="dockerfile的构建过程"><a href="#dockerfile的构建过程" class="headerlink" title="dockerfile的构建过程"></a>dockerfile的构建过程</h3><p><strong>基础知识</strong></p><ol><li>每个指令都必须是大写字母。</li><li>执行从上到下顺序执行。</li><li>#表示注释</li><li>每个指令都会创建一个新的镜像层并提交。</li></ol><p><img src="https://s1.ax1x.com/2020/07/09/UnWytO.png" alt=""></p><p>docker镜像逐渐成为企业交付的标准，所以你懂的。</p>]]></content>
       
       
       <categories>
