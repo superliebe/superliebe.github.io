@@ -16,7 +16,7 @@
 
   <!-- 页面元数据 -->
   
-    <title>docker常用命令操作 - superKM的博客</title>
+    <title>docker常用命令操作、容器卷使用、dockefile等 - superKM的博客</title>
   
     <meta name="keywords" content="docker">
   
@@ -351,7 +351,7 @@ docker 常用命令小字典">
           
   <h1 class="title">
     <a href="/2020/06/18/docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%93%8D%E4%BD%9C/">
-      docker常用命令操作
+      docker常用命令操作、容器卷使用、dockefile等
     </a>
   </h1>
 
@@ -454,7 +454,65 @@ docker 常用命令小字典">
 
 <h4 id="从文件内容拷贝到主机"><a href="#从文件内容拷贝到主机" class="headerlink" title="从文件内容拷贝到主机"></a>从文件内容拷贝到主机</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker cp 容器id:容器内路径 目的的主机路径</span><br></pre></td></tr></table></figure>
 
-<h4 id="登录-docker-hub"><a href="#登录-docker-hub" class="headerlink" title="登录 docker hub"></a>登录 docker hub</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker login</span><br></pre></td></tr></table></figure>
+<h4 id="可视化图形界面"><a href="#可视化图形界面" class="headerlink" title="可视化图形界面"></a>可视化图形界面</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 8088:9000 \</span><br><span class="line">--restart=always -v /var/run/docker.sock:/var/run/docker.sock --privileged=<span class="literal">true</span> portainer/portainer</span><br></pre></td></tr></table></figure>
+
+<h4 id="打包提交自己的镜像"><a href="#打包提交自己的镜像" class="headerlink" title="打包提交自己的镜像"></a>打包提交自己的镜像</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker commit <span class="comment">#提交容器为一个新的副本</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 和 git 提交原理类似</span></span><br><span class="line">docker commit -m=<span class="string">"提交信息"</span> -a=<span class="string">"作者"</span> 容器id 目标镜像名:[tag]</span><br></pre></td></tr></table></figure>
+
+<h3 id="容器卷"><a href="#容器卷" class="headerlink" title="容器卷"></a>容器卷</h3><p>容器之间可以有一个数据共享的技术，docker 容器的数据可以同步到本地，这就是卷技术</p>
+<blockquote>
+<p>卷的设计目的就是数据的持久化，完全独立与容器的生命周期，因此 Docker 不会在容器删除时删除其挂载的数据卷。</p>
+<p>特点：</p>
+<ol>
+<li><p>数据卷可以在容器之间共享和重用数据。</p>
+</li>
+<li><p>卷的更改可以直接生效。</p>
+</li>
+<li><p>数据卷的更改不会包含在镜像的更新中。</p>
+</li>
+<li><p>数据卷的生命周期一直持续到没有容器使用它为止。</p>
+</li>
+</ol>
+<p>容器的持久化</p>
+<p>容器间继承+共享数据</p>
+</blockquote>
+<p><strong>总结一句话：容器持久化和同步技术，容器间也是可以数据共享的！</strong></p>
+<h4 id="使用容器卷"><a href="#使用容器卷" class="headerlink" title="使用容器卷"></a>使用容器卷</h4><blockquote>
+<p>方式-：直接使用命令来挂载 -v</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 指定路径挂载</span></span><br><span class="line">docker run -it -v 主机目录:容器目录</span><br><span class="line"></span><br><span class="line"><span class="comment">#示例</span></span><br><span class="line">docker run -d -it -v /home/ceshi:/home centos /bin/bash</span><br></pre></td></tr></table></figure>
+
+<p>通过 <code>docker inspect 容器id</code> 查看容器详细信息</p>
+<p><img src="https://s1.ax1x.com/2020/07/07/UACcpq.png" alt=""></p>
+<p>如果在容器内部对应的目录下增加文件，则对应的主机目录也会增加相关文件</p>
+<h4 id="具名挂载和匿名挂载"><a href="#具名挂载和匿名挂载" class="headerlink" title="具名挂载和匿名挂载"></a>具名挂载和匿名挂载</h4><ul>
+<li>匿名挂载</li>
+</ul>
+<p>不指定主机名，直接写容器内路径。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">-v 容器内路径</span><br><span class="line">docker run -d -P --name nginx01 -v /etc/nginx nginx</span><br><span class="line"></span><br><span class="line"><span class="comment"># 通过docker volume ls查看所有卷情况</span></span><br><span class="line"></span><br><span class="line">输出：</span><br><span class="line">DRIVER              VOLUME NAME</span><br><span class="line"><span class="built_in">local</span>             53d4bdcfd2df.... <span class="comment">#匿名卷</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>具名挂载</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">-v 容器内路径</span><br><span class="line">docker run -d -P --name nginx02 -v <span class="built_in">test</span>-nginx:/etc/nginx nginx <span class="comment">#指定了名字test-nginx</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 通过docker volume ls查看所有卷情况</span></span><br><span class="line"></span><br><span class="line">输出：</span><br><span class="line">DRIVER              VOLUME NAME</span><br><span class="line"><span class="built_in">local</span>               <span class="built_in">test</span>-nginx <span class="comment">#具名挂载</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 通过 docker volume inspect test-nginx 查看具体卷情况</span></span><br></pre></td></tr></table></figure>
+
+<p>通过具名挂载可以方便的找到卷</p>
+<h3 id="Dockerfile"><a href="#Dockerfile" class="headerlink" title="Dockerfile"></a>Dockerfile</h3><p>dokcerfile 就是用来构建 docker 的镜像文件，也就是命令脚本，通过脚本生成镜像</p>
+<blockquote>
+<p>方式二：命令脚本</p>
+</blockquote>
+<p>创建 dockerfile1 文件并编辑</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#文件中的内容，指令必须大写，每个命令都是一层一层的</span></span><br><span class="line"></span><br><span class="line">FROM centos     <span class="comment">#基础镜像</span></span><br><span class="line"></span><br><span class="line">VOLUME [<span class="string">"volume01"</span>,<span class="string">"volume02"</span>]  <span class="comment">#创建同步的目录，匿名挂载</span></span><br><span class="line"></span><br><span class="line">CMD /bin/bash   <span class="comment"># 运行/bin/bash</span></span><br></pre></td></tr></table></figure>
+
+<p>接下来开始构建</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">docker build -f dockerfile脚本地址 -t 镜像名:[tag] .</span><br><span class="line"></span><br><span class="line"><span class="comment"># 例如：docker build -f dockerfile1 -t superkm/centos:1.0 .</span></span><br><span class="line"><span class="comment"># -f dockerfile脚本地址</span></span><br><span class="line"><span class="comment"># -t 生成镜像且生成到当前目录下，注意最后有个 .</span></span><br></pre></td></tr></table></figure>
+
+<p>然后查看<code>docker images</code> 就可以看到刚刚生成的镜像</p>
+<p>进入自己创建的镜像<code>docker run -it 容器id</code>,然后 ls 查看目录就会看到，目录中包含 volume01,volume02 即为挂载的数据卷目录</p>
+<p><code>docker inspect 容器id</code> 查看容器详情</p>
+<h4 id="容器间同步挂载"><a href="#容器间同步挂载" class="headerlink" title="容器间同步挂载"></a>容器间同步挂载</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 首先创建容器docker01</span></span><br><span class="line">docker run -it --name docker01 superkm/centos:1.0</span><br><span class="line"><span class="comment"># 然后同步创建docker02</span></span><br><span class="line">docker run -it --name docker02 --volumes-from docker01 superkm/centos:1.0</span><br><span class="line"></span><br><span class="line"><span class="comment"># 通过--volumes-from 实现容器间的数据同享，只要存在一个容器使用，其他容器删除文件也依旧存在</span></span><br></pre></td></tr></table></figure>
+
+<p>这样容器 docker01 就和 容器 docker02 挂载目录实时同步更新</p>
+<h3 id="登录-docker-hub"><a href="#登录-docker-hub" class="headerlink" title="登录 docker hub"></a>登录 docker hub</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker login</span><br></pre></td></tr></table></figure>
 
 <p>输入 账号密码回车即可</p>
 
@@ -530,10 +588,10 @@ docker 常用命令小字典">
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-07-06T09:54:32+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-07-09T10:24:14+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2020年7月6日</p>
+    <p>更新于：2020年7月9日</p>
   </a>
 </div>
 
@@ -619,7 +677,7 @@ docker 的基本介绍首先，Docker 容器的启动可以在秒级实现，这
 
   <script>
     window.subData = {
-      title: 'docker常用命令操作',
+      title: 'docker常用命令操作、容器卷使用、dockefile等',
       tools: true
     }
   </script>
@@ -645,7 +703,7 @@ docker 的基本介绍首先，Docker 容器的启动可以在秒级实现，这
 
 
     <div class='content'>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#镜像命令"><span class="toc-text">镜像命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#版本信息"><span class="toc-text">版本信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#系统信息，镜像和容器数量"><span class="toc-text">系统信息，镜像和容器数量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#查看所有本地主机上的镜像"><span class="toc-text">查看所有本地主机上的镜像</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#搜索镜像"><span class="toc-text">搜索镜像</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#下载镜像"><span class="toc-text">下载镜像</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#删除镜像"><span class="toc-text">删除镜像</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#容器命令"><span class="toc-text">容器命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#新建容器并启动"><span class="toc-text">新建容器并启动</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#查看运行中的容器"><span class="toc-text">查看运行中的容器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#删除容器"><span class="toc-text">删除容器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#退出容器"><span class="toc-text">退出容器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#启动容器"><span class="toc-text">启动容器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#停止容器"><span class="toc-text">停止容器</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常用其他命令"><span class="toc-text">常用其他命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#后台启动"><span class="toc-text">后台启动</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#持续打印日志"><span class="toc-text">持续打印日志</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#查看-docker-容器内部的进程信息"><span class="toc-text">查看 docker 容器内部的进程信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#查看容器元数据"><span class="toc-text">查看容器元数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#进入当前正在运行的容器"><span class="toc-text">进入当前正在运行的容器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#从文件内容拷贝到主机"><span class="toc-text">从文件内容拷贝到主机</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#登录-docker-hub"><span class="toc-text">登录 docker hub</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#镜像命令"><span class="toc-text">镜像命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#版本信息"><span class="toc-text">版本信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#系统信息，镜像和容器数量"><span class="toc-text">系统信息，镜像和容器数量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#查看所有本地主机上的镜像"><span class="toc-text">查看所有本地主机上的镜像</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#搜索镜像"><span class="toc-text">搜索镜像</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#下载镜像"><span class="toc-text">下载镜像</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#删除镜像"><span class="toc-text">删除镜像</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#容器命令"><span class="toc-text">容器命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#新建容器并启动"><span class="toc-text">新建容器并启动</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#查看运行中的容器"><span class="toc-text">查看运行中的容器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#删除容器"><span class="toc-text">删除容器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#退出容器"><span class="toc-text">退出容器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#启动容器"><span class="toc-text">启动容器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#停止容器"><span class="toc-text">停止容器</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常用其他命令"><span class="toc-text">常用其他命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#后台启动"><span class="toc-text">后台启动</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#持续打印日志"><span class="toc-text">持续打印日志</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#查看-docker-容器内部的进程信息"><span class="toc-text">查看 docker 容器内部的进程信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#查看容器元数据"><span class="toc-text">查看容器元数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#进入当前正在运行的容器"><span class="toc-text">进入当前正在运行的容器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#从文件内容拷贝到主机"><span class="toc-text">从文件内容拷贝到主机</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#可视化图形界面"><span class="toc-text">可视化图形界面</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#打包提交自己的镜像"><span class="toc-text">打包提交自己的镜像</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#容器卷"><span class="toc-text">容器卷</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#使用容器卷"><span class="toc-text">使用容器卷</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#具名挂载和匿名挂载"><span class="toc-text">具名挂载和匿名挂载</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Dockerfile"><span class="toc-text">Dockerfile</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#容器间同步挂载"><span class="toc-text">容器间同步挂载</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#登录-docker-hub"><span class="toc-text">登录 docker hub</span></a></li></ol>
     </div>
   </section>
 
