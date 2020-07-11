@@ -440,7 +440,7 @@
 <p>创建一个自己的centos</p>
 </blockquote>
 <ul>
-<li>在 home 目录中创建 dockerfile 文件夹，<code>vim mydockerfile</code> ,编写dockerfile文件</li>
+<li>在 home 目录中创建 dockerfile 文件夹，<code>vim mydockerfile</code> ,编写dockerfile文件 </li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 编写dockersfile文件</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#基于centos基础环境</span></span><br><span class="line">FROM centos</span><br><span class="line">MAINTAINER superkm&lt;583902049@qq.com&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置环境变量</span></span><br><span class="line">ENV MYPATH /user/<span class="built_in">local</span>  <span class="comment">#默认进入的目录</span></span><br><span class="line">WORKDIR <span class="variable">$MYPATH</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 执行安装的一些命令</span></span><br><span class="line">RUN yum -y install vim</span><br><span class="line">RUN yum -y install net-tools</span><br><span class="line"></span><br><span class="line"><span class="comment">#暴漏的端口</span></span><br><span class="line">EXPOSE 80</span><br><span class="line"></span><br><span class="line"><span class="comment">#输出信息，默认进入命令行</span></span><br><span class="line">CMD <span class="built_in">echo</span> <span class="variable">$MYPATH</span></span><br><span class="line">CMD <span class="built_in">echo</span> <span class="string">"---end---"</span></span><br><span class="line">CMD /bin/bash</span><br></pre></td></tr></table></figure>
 
@@ -525,10 +525,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-07-09T23:57:07+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-07-11T21:26:46+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2020年7月9日</p>
+    <p>更新于：2020年7月11日</p>
   </a>
 </div>
 
@@ -556,6 +556,20 @@
         
         
           <div class="prev-next">
+            
+              <a class='prev' href='/2020/07/11/docker%E9%95%9C%E5%83%8F%E5%8F%91%E5%B8%83/'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>docker镜像发布到dockerhub和阿里云</p>
+                <p class='content'>docker 镜像发布，一般使用以下两种情况
+
+
+发布前准备
+创建自己的 dockerhub 账号，dockerhub 官网。
+
+在服务器上提交镜像。
+
+
+docker 镜像发布到 docker...</p>
+              </a>
             
             
               <a class='next' href='/2020/07/01/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/'>
