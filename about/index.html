@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head hexo-theme='https://volantis.js.org/#ღ'>
+<head hexo-theme='https://volantis.js.org/#3.0'>
   <meta charset="utf-8">
   <!-- SEO相关 -->
   
@@ -16,8 +16,9 @@
 
   <!-- 页面元数据 -->
   
-    <title>关于我 - superKM的博客</title>
+  <title>关于我 - superKM的博客</title>
   
+
   
 
   <!-- feed -->
@@ -33,7 +34,7 @@
   
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
 
-  
+
   
     
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
@@ -58,27 +59,103 @@
 
   
 
-  <script>
-    function setLoadingBarProgress(num) {
-      document.getElementById('loading-bar').style.width=num+"%";
-    }
-  </script>
-
   
   
 </head>
 
 <body>
   
-  <div id="loading-bar-wrapper">
-  <div id="loading-bar"></div>
+  
+  
+  <div class="cover-wrapper">
+    <cover class='cover page' style="display: none;">
+      <div class='cover-body'>
+  <div class='a'>
+    
+    
+      <p class="title">superkm’s Blog</p>
+    
+    
+      <p class="subtitle">Don’t Repeat Yourself</p>
+    
+  </div>
+  <div class='b'>
+    
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <input type="text" class="input u-search-input" placeholder="搜搜看看" />
+          <i class="icon fas fa-search fa-fw"></i>
+        </form>
+      </div>
+    
+    <div class='menu navigation'>
+      <ul class='cover-list-h'>
+        
+          
+            <li>
+              <a class="nav home"
+                href="/"
+                
+                
+                id="home">
+                <i class='fas fa-book fa-fw'></i>首页
+              </a>
+            </li>
+          
+            <li>
+              <a class="nav home"
+                href="/categories/"
+                
+                
+                id="categories">
+                <i class='fas fa-folder-open fa-fw'></i>分类
+              </a>
+            </li>
+          
+            <li>
+              <a class="nav home"
+                href="/tags/"
+                
+                
+                id="tags">
+                <i class='fas fa-tags fa-fw'></i>标签
+              </a>
+            </li>
+          
+            <li>
+              <a class="nav home"
+                href="/archives/"
+                
+                
+                id="archives">
+                <i class='fas fa-archive fa-fw'></i>归档
+              </a>
+            </li>
+          
+            <li>
+              <a class="nav home"
+                href="/about/"
+                
+                
+                id="about">
+                <i class='fas fa-info-circle fa-fw'></i>关于我
+              </a>
+            </li>
+          
+        
+      </ul>
+    </div>
+  </div>
 </div>
-<header class="l_header shadow blur">
+
+      <div class="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
+    </cover>
+    <header class="l_header shadow blur">
   <div class='container'>
   <div class='wrapper'>
     <div class='nav-sub'>
       <p class="title"></p>
-      <ul class='switcher nav-list-h'>
+      <ul class='switcher nav-list-h' id="pjax-header-nav-list">
         <li><a class="s-comment fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
         
           <li><a class="s-toc fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
@@ -92,8 +169,7 @@
           
           
           
-          
-            SUPERKM <b><sup style='color:#3AA757'>ღ</sup></b>
+            superKM
           
         </a>
       
@@ -321,12 +397,49 @@
   </div>
 </header>
 
-<script>setLoadingBarProgress(40);</script>
-
-
+  </div>
+  
 
   <div class="l_body nocover">
-    <div class='body-wrapper'>
+    <div class='body-wrapper' id="pjax-container">
+      
+        <!--此文件用来存放一些不方便取值的变量-->
+<!--思路大概是将值藏到重加载的区域内-->
+
+
+
+<div id="pjax-data" style="display: none">
+  <div id="pjax-ispage">false</div>
+  <div id="pjax-pageTitle"></div>
+  <div id="pjax-enable-cover">true</div>
+  
+  
+</div>
+
+
+<script>
+  // 处理封面 此时 jquery 还没加载
+  if ("none" == "none") { // 移除封面
+    document.getElementsByClassName('cover')[0].style.display = "none";
+    document.getElementsByClassName('l_body')[0].classList.add("nocover");
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.add("show");
+  } else {
+    if ("none" == "blog") { // 半屏
+      document.getElementsByClassName('cover')[0].classList.remove("full");
+      document.getElementsByClassName('cover')[0].classList.add("half");
+      document.getElementsByClassName('scroll-down')[0].style.display = "none";
+    } else if ("none" == "docs") { // 全屏
+      document.getElementsByClassName('cover')[0].classList.remove("half");
+      document.getElementsByClassName('cover')[0].classList.add("full");
+      document.getElementsByClassName('scroll-down')[0].style.display = "";
+    }
+    document.getElementsByClassName('cover')[0].style.display = "";
+    document.getElementsByClassName('l_body', 'show')[0].classList.remove("nocover");
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.remove("show");
+  }
+</script>
+
+      
       
 
 <div class='l_main'>
@@ -360,7 +473,7 @@
               
 <div class='new-meta-item author'>
   <a href="" rel="nofollow">
-    <img src="http://oss.jishiyoo.com/images/file-1590246592360.png">
+    <img no-lazy src="http://oss.jishiyoo.com/images/file-1590246592360.png">
     <p>superKM</p>
   </a>
 </div>
@@ -376,7 +489,7 @@
               <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2020年7月13日</p>
+    <p>发布于：2020年7月19日</p>
   </a>
 </div>
 
@@ -398,6 +511,7 @@
 
       <section class="article typo">
         <div class="article-entry" itemprop="articleBody">
+          
           
           <style>
 
@@ -667,7 +781,7 @@
 </div>
 
 <h4 id="😶-个人情况"><a href="#😶-个人情况" class="headerlink" title="😶 个人情况"></a>😶 个人情况</h4><ul>
-<li>郑州大学本科毕业<!-- - 工作 5 年余载，参与项目不计其数 --></li>
+<li>郑州大学毕业<!-- - 工作 5 年余载，参与项目不计其数 --></li>
 <li><span class='p red'>热爱开源</span>，<span class='p yellow'>热爱技术</span>，<span class='p green'>热爱探索</span>、<span class='p cyan'>热爱生活</span>、<span class='p blue'>热爱身边的一切</span>。
 
 </li>
@@ -675,26 +789,37 @@
 <h4 id="😝-擅长领域"><a href="#😝-擅长领域" class="headerlink" title="😝 擅长领域"></a>😝 擅长领域</h4><div class='checkbox checked'><input type="checkbox" checked="checked"/>
             <p>vue全家桶，桶装干净又卫生</p>
             </div>
+
 <div class='checkbox checked'><input type="checkbox" checked="checked"/>
             <p>微信小程序开发 ，微信网页开发，移动webApp开发</p>
             </div>
+
 <div class='checkbox checked'><input type="checkbox" checked="checked"/>
             <p>jquery 框架 ， ES6语法 ，Git</p>
             </div>
+
 <div class='checkbox checked'><input type="checkbox" checked="checked"/>
             <p>Docker 部署项目</p>
             </div>
+
 <div class='checkbox checked'><input type="checkbox" checked="checked"/>
             <p>Nginx 代理</p>
             </div>
+
 <div class='checkbox checked'><input type="checkbox" checked="checked"/>
             <p>nodejs ，webpack</p>
             </div>
+
 <div class='checkbox checked'><input type="checkbox" checked="checked"/>
             <p>kbone + vue 同时支持web和小程序</p>
             </div>
+
 <div class='checkbox checked'><input type="checkbox" checked="checked"/>
             <p>tradingview K 线图制作</p>
+            </div>
+
+<div class='checkbox checked'><input type="checkbox" checked="checked"/>
+            <p>pwa 渐进式web应用</p>
             </div>
 
 <details ><summary> <p>常用开发工具</p> </summary>
@@ -704,6 +829,10 @@
             </details>
 
 <h4 id="🧐-探索学习中"><a href="#🧐-探索学习中" class="headerlink" title="🧐 探索学习中"></a>🧐 探索学习中</h4><div class='checkbox'><input type="checkbox" />
+            <p>Flutter 跨平台多端webApp开发</p>
+            </div>
+
+<div class='checkbox'><input type="checkbox" />
             <p>vite vue3打包技术</p>
             </div>
 
@@ -715,13 +844,7 @@
             <p>noSql 非关系型的数据库</p>
             </div>
 
-<div class='checkbox'><input type="checkbox" />
-            <p>Flutter 跨平台多端webApp开发</p>
-            </div>
 
-<div class='checkbox'><input type="checkbox" />
-            <p>pwa 渐进式web应用</p>
-            </div>
 
 <h4 id="🙃-CSDN-博客-–-superKM"><a href="#🙃-CSDN-博客-–-superKM" class="headerlink" title="🙃 CSDN 博客 – superKM"></a>🙃 CSDN 博客 – <a href="https://blog.csdn.net/superKM" target="_blank" rel="noopener">superKM</a></h4><h4 id="😇-期望"><a href="#😇-期望" class="headerlink" title="😇 期望"></a>😇 期望</h4><ul>
 <li><strong>前端全栈</strong>攻城狮占领全地球，奥里给！</li>
@@ -737,10 +860,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-07-13T11:29:02+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-07-19T19:01:09+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2020年7月13日</p>
+    <p>更新于：2020年7月19日</p>
   </a>
 </div>
 
@@ -757,6 +880,52 @@
         
       
         
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=http://superliebe.github.io/about/index.html&title=关于我 - superKM的博客&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://superliebe.github.io/about/index.html&title=关于我 - superKM的博客&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=http://superliebe.github.io/about/index.html&title=关于我 - superKM的博客&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
       
     </div>
   </section>
@@ -769,11 +938,19 @@
   
 
   
-    <!-- 显示推荐文章和评论 -->
+    
+  <article class="post white-box reveal comments shadow">
+    <section class="article typo">
+      <p ct><i class='fas fa-comments'></i> 评论</p>
+      
+      <section id="comments">
+        <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+</div>
 
-
-
-  
+      </section>
+    </section>
+  </article>
 
 
   
@@ -782,8 +959,6 @@
 
 
 <!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
-
-
 
 
 </div>
@@ -796,7 +971,8 @@
     
 
 
-  <section class="widget toc-wrapper shadow desktop mobile">
+
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
     
   <header>
     
@@ -806,7 +982,7 @@
 
 
     <div class='content'>
-      <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#😶-个人情况"><span class="toc-text">😶 个人情况</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#😝-擅长领域"><span class="toc-text">😝 擅长领域</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#🧐-探索学习中"><span class="toc-text">🧐 探索学习中</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#🙃-CSDN-博客-–-superKM"><span class="toc-text">🙃 CSDN 博客 – superKM</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#😇-期望"><span class="toc-text">😇 期望</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#😶-个人情况"><span class="toc-text">😶 个人情况</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#😝-擅长领域"><span class="toc-text">😝 擅长领域</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#🧐-探索学习中"><span class="toc-text">🧐 探索学习中</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#🙃-CSDN-博客-–-superKM"><span class="toc-text">🙃 CSDN 博客 – superKM</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#😇-期望"><span class="toc-text">😇 期望</span></a></li></ol>
     </div>
   </section>
 
@@ -817,6 +993,9 @@
 </aside>
 
 
+
+    </div>
+    
   
   <footer class="clearfix">
     <br><br>
@@ -848,14 +1027,6 @@
       
         <br>
         <div class="social-wrapper">
-          
-            
-              <a href="/atom.xml"
-                class="social fas fa-rss flat-btn"
-                target="_blank"
-                rel="external nofollow noopener noreferrer">
-              </a>
-            
           
             
               <a href="mailto:583902049@qq.com"
@@ -891,7 +1062,7 @@
     
       
         本站使用
-        <a href="https://volantis.js.org/" target="_blank" class="codename">superkm</a>
+        <a href="https://volantis.js.org/" target="_blank" class="codename">Volantis</a>
         作为主题，总访问量为
           <span id="busuanzi_value_site_pv"><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
           次
@@ -900,22 +1071,20 @@
     
       
         <div class='copyright'>
-        <p><a href="https://github.com/superliebe" target="_blank" rel="noopener">Copyright © 2020 superKM</a></p>
+        <p><a href="https://superliebe.github.io">Copyright © 2017-2020 superkm</a></p>
 
         </div>
       
     
   </footer>
 
-<script>setLoadingBarProgress(80);</script>
 
-
-      <script>setLoadingBarProgress(60);</script>
-    </div>
     <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
   </div>
-  
+  <div>
+    
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.4/dist/jquery.min.js"></script>
+
 
 
   <script>
@@ -926,39 +1095,10 @@
   </script>
 
 
+
+
+
   <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
-
-
-  <script src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.6/dist/scrollreveal.min.js"></script>
-  <script type="text/javascript">
-    $(function() {
-      ScrollReveal().reveal('.l_main .reveal', {
-        distance: '8px',
-        duration: '800',
-        interval: '100',
-        scale: '1'
-      });
-    });
-  </script>
-
-
-  
-<script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
-
-  <script type="text/javascript">
-    $(function() {
-      Waves.attach('.flat-btn', ['waves-button']);
-      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
-      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
-      Waves.attach('.flat-box', ['waves-block']);
-      Waves.attach('.float-box', ['waves-block', 'waves-float']);
-      Waves.attach('.waves-image');
-      Waves.init();
-    });
-  </script>
-
-
-  <script defer src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
 
 
 
@@ -1016,32 +1156,84 @@
   
 
 
-
-
-
-
-
-
-
-
-
-
+<!-- 评论 （PS：只对 valine 做了 Pjax 兼容） -->
 
   
-<script src="/js/app.js"></script>
-
-
-
   
-<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.6.5/js/search.js"></script>
+<script src="/js/valine.js"></script>
+
+
+<script>
+  var GUEST_INFO = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link'.split(',').filter(function (item) {
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var REQUIRED_FIELDS = ['nick', 'mail', 'link'];
+  var requiredFields = 'nick,mail'.split(',').filter(function (item) {
+    return REQUIRED_FIELDS.indexOf(item) > -1
+  });
+
+  function emoji(path, idx, ext) {
+    return path + "/" + path + "-" + idx + "." + ext;
+  }
+
+  var emojiMaps = {};
+  for (var i = 1; i <= 54; i++) {
+    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+  }
+  for (var i = 1; i <= 101; i++) {
+    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+  }
+  for (var i = 1; i <= 116; i++) {
+    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+  }
+  for (var i = 1; i <= 125; i++) {
+    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+  }
+  for (var i = 1; i <= 4; i++) {
+    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+  }
+
+  function pjax_valine() {
+    var valinePath = $.trim($('#valine-path').text()) === "none" ?
+            window.location.pathname : $.trim($('#valine-path').text());
+
+    var valinePlaceholder = $.trim($('#valine-placeholder').text()) === "none" ?
+            "快来评论吧~" : $.trim($('#valine-placeholder').text());
+
+    var ALLPATH = '';
+    if(ALLPATH != '') valinePath = ALLPATH;
+
+    var valine = new Valine();
+    valine.init({
+      el: '#valine_container',
+      meta: meta,
+      placeholder: valinePlaceholder,
+      path: valinePath,
+      appId: "dogUA2FSKGTo029M1SEwGROT-MdYXbMMI",
+      appKey: "u0NdtQ8nvHoMdJPSYqm1LRxE",
+      pageSize: '10',
+      avatar: 'robohash',
+      lang: 'zh-cn',
+      visitor: 'true',
+      highlight: 'true',
+      mathJax: 'false',
+      enableQQ: 'true',
+      requiredFields: requiredFields,
+      emojiCDN: 'https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/',
+      emojiMaps: emojiMaps
+    })
+  }
+
+  $(function () {
+    pjax_valine();
+  });
+</script>
 
 
 
-  
-<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/comment_typing.js"></script>
 
-
-
+<!-- darkmodejs -->
 
 
 
@@ -1049,61 +1241,78 @@
 
   <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
 <script>
-  function wait(callback, seconds) {
-    var timelag = null;
-    timelag = window.setTimeout(callback, seconds);
-  }
-  !function (e, t, a) {
-    var initCopyCode = function(){
-      var copyHtml = '';
-      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
-      copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
-      copyHtml += '</button>';
-      $(".highlight .code pre").before(copyHtml);
-      $(".article pre code").before(copyHtml);
-      var clipboard = new ClipboardJS('.btn-copy', {
-        target: function(trigger) {
-          return trigger.nextElementSibling;
+    var clipboard = new ClipboardJS('.btn-copy', {
+        target: function (trigger) {
+            return trigger.nextElementSibling
         }
-      });
-      clipboard.on('success', function(e) {
-        let $btn = $(e.trigger);
-        $btn.addClass('copied');
-        let $icon = $($btn.find('i'));
-        $icon.removeClass('fa-copy');
-        $icon.addClass('fa-check-circle');
-        let $span = $($btn.find('span'));
-        $span[0].innerText = 'COPIED';
-        
-        wait(function () { // 等待两秒钟后恢复
-          $icon.removeClass('fa-check-circle');
-          $icon.addClass('fa-copy');
-          $span[0].innerText = 'COPY';
-        }, 2000);
-      });
-      clipboard.on('error', function(e) {
-        e.clearSelection();
-        let $btn = $(e.trigger);
-        $btn.addClass('copy-failed');
-        let $icon = $($btn.find('i'));
-        $icon.removeClass('fa-copy');
-        $icon.addClass('fa-times-circle');
-        let $span = $($btn.find('span'));
-        $span[0].innerText = 'COPY FAILED';
-        
-        wait(function () { // 等待两秒钟后恢复
-          $icon.removeClass('fa-times-circle');
-          $icon.addClass('fa-copy');
-          $span[0].innerText = 'COPY';
-        }, 2000);
-      });
+    });
+    function wait(callback, seconds) {
+        var timelag = null;
+        timelag = window.setTimeout(callback, seconds)
     }
-    initCopyCode();
-  }(window, document);
+    function pjax_initCopyCode() {
+        var copyHtml = '';
+        copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+        copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+        copyHtml += '</button>';
+        $(".highlight .code pre").before(copyHtml);
+        $(".article pre code").before(copyHtml);
+        clipboard.off('success').on('success', function (e) {
+            let $btn = $(e.trigger);
+            $btn.addClass('copied');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-check-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPIED';
+            wait(function () {
+                $icon.removeClass('fa-check-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        });
+        clipboard.off('error').on('error', function (e) {
+            e.clearSelection();
+            let $btn = $(e.trigger);
+            $btn.addClass('copy-failed');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-times-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPY FAILED';
+            wait(function () {
+                $icon.removeClass('fa-times-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        })
+    }
+    $(function () {
+        pjax_initCopyCode()
+    });
 </script>
 
 
+<!-- scrollreveal -->
 
+  <script src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.6/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    function pjax_scrollrebeal() {
+      ScrollReveal().reveal('.l_main .reveal', {
+        distance: '32px',
+        duration: '800',
+        interval: '20',
+        scale: '1',
+        easing: 'ease-out'
+      });
+    }
+
+    $(function () {
+      pjax_scrollrebeal();
+    });
+  </script>
+
+<!-- ******************************** -->
 
 <!-- fancybox -->
 <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
@@ -1118,7 +1327,7 @@
       }
       $(element).attr("data-fancybox", "images");
       var caption = "";   // 描述信息
-      if ($(this).attr('alt')) {  // 标准 markdown 描述信息
+      if ($(this).attr('alt')) {  // 判断当前页面是否存在描述信息
         $(element).attr('data-caption', $(this).attr('alt'));
         caption = $(this).attr('alt');
       }
@@ -1150,9 +1359,174 @@
   });
 </script>
 
+<!-- ******************************** -->
+
+
+  
+<script src="/js/app.js"></script>
 
 
 
-  <script>setLoadingBarProgress(100);</script>
+
+  
+    
+<script src="/js/search.js"></script>
+
+  
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js" data-pjax></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function () {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/comment_typing.js"></script>
+
+
+
+
+
+
+
+    
+      
+
+
+<script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script>
+
+<!-- 样式位于：source/css/_third-party/pjaxanimate.styl -->
+
+<div class="pjax-animate">
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css">
+    <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+    <div id="loading-bar-wrapper"><script>NProgress.configure({parent:"#loading-bar-wrapper",trickleSpeed: 100})</script></div>
+    <script>
+      window.ShowLoading = function() {
+        NProgress.start();
+      };
+      window.HideLoading = function() {
+        NProgress.done();
+      }
+    </script>
+  
+</div>
+
+<script>
+    var pjax;
+    document.addEventListener('DOMContentLoaded', function () {
+      pjax = new Pjax({
+        elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([pjax-fancybox])',
+        selectors: [
+          "title",
+          "#pjax-container",
+          "#pjax-header-nav-list"
+        ],
+        cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+        timeout: 5000
+      });
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+      window.stop(); // 相当于点击了浏览器的停止按钮
+      var currentUrl = window.location.pathname;
+      var targetUrl = e.triggerElement.href;
+      var banUrl = [""];
+      if (banUrl[0] != "") {
+        banUrl.forEach(item => {
+          if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+            window.location.href = targetUrl;
+          }
+        });
+      }
+      window.subData = null; // 移除标题（用于一二级导航栏切换处）
+      $.fancybox.close();    // 关闭弹窗
+      $('.nav-main').find('.list-v').not('.menu-phone').css("display","none"); // 移除小尾巴
+      $('.menu-phone.list-v').css("display","none"); // 移除小尾巴
+      $('.l_header .switcher .s-search').removeClass('active'); // 关闭移动端激活的搜索框
+      $('.l_header').removeClass('z_search-open'); // 关闭移动端激活的搜索框
+      $('.wrapper').removeClass('sub'); // 跳转页面时关闭二级导航
+
+      $('.s-top').unbind('click');   // 解绑
+      $('.menu a').unbind('click');  // 解绑
+      $(window).unbind('resize');    // 解绑
+      $(window).unbind('scroll');    // 解绑
+      $(document).unbind('scroll');  // 解绑
+      $(document).unbind('click');   // 解绑
+      $('body').unbind('click');     // 解绑
+      window.ShowLoading();
+    });
+
+    document.addEventListener('pjax:complete', function () {
+      // 关于百度统计对 SPA 页面的处理：
+      // 方案一：百度统计>管理>单页应用设置中，打开开启按钮即可对SPA进行统计。 https://tongji.baidu.com/web/help/article?id=324
+      // 方案二：取消注释下列代码。 https://tongji.baidu.com/web/help/article?id=235
+      // 
+
+      // 关于谷歌统计对 SPA 页面的处理：
+      // 当应用以动态方式加载内容并更新地址栏中的网址时，也应该更新通过 gtag.js 存储的网页网址。
+      // https://developers.google.cn/analytics/devguides/collection/gtagjs/single-page-applications?hl=zh-cn
+      
+
+      $('.nav-main').find('.list-v').not('.menu-phone').removeAttr("style",""); // 移除小尾巴的移除
+      $('.menu-phone.list-v').removeAttr("style",""); // 移除小尾巴的移除
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+
+      try{
+        pjax_fancybox();
+        
+          
+          if ('') {
+            $('').backstretch("resize");
+          } else {
+            $.backstretch("resize");
+          }
+        
+        
+        
+          pjax_scrollrebeal();
+        
+        
+          pjax_initCopyCode();
+        
+        
+          pjax_valine();
+        
+        
+        
+      } catch (e) {
+        console.log(e);
+      }
+      window.HideLoading();
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+      window.HideLoading();
+      window.location.href = e.triggerElement.href;
+    });
+</script>
+
+    
+  </div>
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7}});</script></body>
 </html>

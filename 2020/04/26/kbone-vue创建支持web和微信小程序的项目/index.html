@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head hexo-theme='https://volantis.js.org/#ღ'>
+<head hexo-theme='https://volantis.js.org/#3.0'>
   <meta charset="utf-8">
   <!-- SEO相关 -->
   
@@ -16,10 +16,11 @@
 
   <!-- 页面元数据 -->
   
-    <title>kbone+vue创建支持web和微信小程序的项目 - superKM的博客</title>
+  <title>kbone+vue创建支持web和微信小程序的项目 - superKM的博客</title>
   
     <meta name="keywords" content="kbone,vue">
   
+
   
     <meta name="description" content="
 Kbone 是腾讯开发的解决微信小程序和 Web 端同构的框架。简单来说就是只写一套代码，编译结果可以在 web 端和小程序上运行。">
@@ -38,7 +39,7 @@ Kbone 是腾讯开发的解决微信小程序和 Web 端同构的框架。简单
   
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
 
-  
+
   
     
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
@@ -63,27 +64,103 @@ Kbone 是腾讯开发的解决微信小程序和 Web 端同构的框架。简单
 
   
 
-  <script>
-    function setLoadingBarProgress(num) {
-      document.getElementById('loading-bar').style.width=num+"%";
-    }
-  </script>
-
   
   
 </head>
 
 <body>
   
-  <div id="loading-bar-wrapper">
-  <div id="loading-bar"></div>
+  
+  
+  <div class="cover-wrapper">
+    <cover class='cover post' style="display: none;">
+      <div class='cover-body'>
+  <div class='a'>
+    
+    
+      <p class="title">superkm’s Blog</p>
+    
+    
+      <p class="subtitle">Don’t Repeat Yourself</p>
+    
+  </div>
+  <div class='b'>
+    
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <input type="text" class="input u-search-input" placeholder="搜搜看看" />
+          <i class="icon fas fa-search fa-fw"></i>
+        </form>
+      </div>
+    
+    <div class='menu navigation'>
+      <ul class='cover-list-h'>
+        
+          
+            <li>
+              <a class="nav home"
+                href="/"
+                
+                
+                id="home">
+                <i class='fas fa-book fa-fw'></i>首页
+              </a>
+            </li>
+          
+            <li>
+              <a class="nav home"
+                href="/categories/"
+                
+                
+                id="categories">
+                <i class='fas fa-folder-open fa-fw'></i>分类
+              </a>
+            </li>
+          
+            <li>
+              <a class="nav home"
+                href="/tags/"
+                
+                
+                id="tags">
+                <i class='fas fa-tags fa-fw'></i>标签
+              </a>
+            </li>
+          
+            <li>
+              <a class="nav home"
+                href="/archives/"
+                
+                
+                id="archives">
+                <i class='fas fa-archive fa-fw'></i>归档
+              </a>
+            </li>
+          
+            <li>
+              <a class="nav home"
+                href="/about/"
+                
+                
+                id="about">
+                <i class='fas fa-info-circle fa-fw'></i>关于我
+              </a>
+            </li>
+          
+        
+      </ul>
+    </div>
+  </div>
 </div>
-<header class="l_header shadow blur">
+
+      <div class="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
+    </cover>
+    <header class="l_header shadow blur">
   <div class='container'>
   <div class='wrapper'>
     <div class='nav-sub'>
       <p class="title"></p>
-      <ul class='switcher nav-list-h'>
+      <ul class='switcher nav-list-h' id="pjax-header-nav-list">
         <li><a class="s-comment fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
         
           <li><a class="s-toc fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
@@ -97,8 +174,7 @@ Kbone 是腾讯开发的解决微信小程序和 Web 端同构的框架。简单
           
           
           
-          
-            SUPERKM <b><sup style='color:#3AA757'>ღ</sup></b>
+            superKM
           
         </a>
       
@@ -326,12 +402,52 @@ Kbone 是腾讯开发的解决微信小程序和 Web 端同构的框架。简单
   </div>
 </header>
 
-<script>setLoadingBarProgress(40);</script>
-
-
+  </div>
+  
 
   <div class="l_body nocover">
-    <div class='body-wrapper'>
+    <div class='body-wrapper' id="pjax-container">
+      
+        <!--此文件用来存放一些不方便取值的变量-->
+<!--思路大概是将值藏到重加载的区域内-->
+
+
+
+<div id="pjax-data" style="display: none">
+  <div id="pjax-ispage">true</div>
+  <div id="pjax-pageTitle">kbone+vue创建支持web和微信小程序的项目</div>
+  <div id="pjax-enable-cover">true</div>
+  
+  <div id="valine-path">none</div>
+  <div id="valine-placeholder">none</div>
+  
+  
+</div>
+
+
+<script>
+  // 处理封面 此时 jquery 还没加载
+  if ("none" == "none") { // 移除封面
+    document.getElementsByClassName('cover')[0].style.display = "none";
+    document.getElementsByClassName('l_body')[0].classList.add("nocover");
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.add("show");
+  } else {
+    if ("none" == "blog") { // 半屏
+      document.getElementsByClassName('cover')[0].classList.remove("full");
+      document.getElementsByClassName('cover')[0].classList.add("half");
+      document.getElementsByClassName('scroll-down')[0].style.display = "none";
+    } else if ("none" == "docs") { // 全屏
+      document.getElementsByClassName('cover')[0].classList.remove("half");
+      document.getElementsByClassName('cover')[0].classList.add("full");
+      document.getElementsByClassName('scroll-down')[0].style.display = "";
+    }
+    document.getElementsByClassName('cover')[0].style.display = "";
+    document.getElementsByClassName('l_body', 'show')[0].classList.remove("nocover");
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.remove("show");
+  }
+</script>
+
+      
       
 
 <div class='l_main'>
@@ -365,7 +481,7 @@ Kbone 是腾讯开发的解决微信小程序和 Web 端同构的框架。简单
               
 <div class='new-meta-item author'>
   <a href="" rel="nofollow">
-    <img src="http://oss.jishiyoo.com/images/file-1590246592360.png">
+    <img no-lazy src="http://oss.jishiyoo.com/images/file-1590246592360.png">
     <p>superKM</p>
   </a>
 </div>
@@ -411,6 +527,7 @@ Kbone 是腾讯开发的解决微信小程序和 Web 端同构的框架。简单
 
       <section class="article typo">
         <div class="article-entry" itemprop="articleBody">
+          
           
           <p><img src="https://pic1.zhimg.com/v2-7a735d09695218bec1d69477f6a243bc_1200x500.jpg" alt=""></p>
 <p>Kbone 是腾讯开发的解决微信小程序和 Web 端同构的框架。简单来说就是只写一套代码，编译结果可以在 web 端和小程序上运行。</p>
@@ -485,7 +602,7 @@ Kbone 是腾讯开发的解决微信小程序和 Web 端同构的框架。简单
           
         
           
-            <p>本文永久链接是<a href=http://superliebe.github.io/2020/04/26/kbone-vue%E5%88%9B%E5%BB%BA%E6%94%AF%E6%8C%81web%E5%92%8C%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%9A%84%E9%A1%B9%E7%9B%AE/>http://superliebe.github.io/2020/04/26/kbone-vue%E5%88%9B%E5%BB%BA%E6%94%AF%E6%8C%81web%E5%92%8C%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%9A%84%E9%A1%B9%E7%9B%AE/</a></p>
+            <p>本文永久链接是：<a href=http://superliebe.github.io/2020/04/26/kbone-vue%E5%88%9B%E5%BB%BA%E6%94%AF%E6%8C%81web%E5%92%8C%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%9A%84%E9%A1%B9%E7%9B%AE/>http://superliebe.github.io/2020/04/26/kbone-vue%E5%88%9B%E5%BB%BA%E6%94%AF%E6%8C%81web%E5%92%8C%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%9A%84%E9%A1%B9%E7%9B%AE/</a></p>
           
         
       </blockquote>
@@ -503,6 +620,20 @@ Kbone 是腾讯开发的解决微信小程序和 Web 端同构的框架。简单
   
 
   <div class='content article-entry'>
+    
+      
+        <div class='fancybox'><img src='https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/qrcode/wiki_volantis.png'
+        
+          height='64px'
+        ></div>
+      
+    
+      
+        <div class='fancybox'><img src='https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/qrcode/wiki_volantis.png'
+        
+          height='64px'
+        ></div>
+      
     
   </div>
 </section>
@@ -545,6 +676,55 @@ Kbone 是腾讯开发的解决微信小程序和 Web 端同构的框架。简单
         
       
         
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=http://superliebe.github.io/2020/04/26/kbone-vue%E5%88%9B%E5%BB%BA%E6%94%AF%E6%8C%81web%E5%92%8C%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%9A%84%E9%A1%B9%E7%9B%AE/&title=kbone+vue创建支持web和微信小程序的项目 - superKM的博客&summary=
+Kbone 是腾讯开发的解决微信小程序和 Web 端同构的框架。简单来说就是只写一套代码，编译结果可以在 web 端和小程序上运行。"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://superliebe.github.io/2020/04/26/kbone-vue%E5%88%9B%E5%BB%BA%E6%94%AF%E6%8C%81web%E5%92%8C%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%9A%84%E9%A1%B9%E7%9B%AE/&title=kbone+vue创建支持web和微信小程序的项目 - superKM的博客&summary=
+Kbone 是腾讯开发的解决微信小程序和 Web 端同构的框架。简单来说就是只写一套代码，编译结果可以在 web 端和小程序上运行。"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=http://superliebe.github.io/2020/04/26/kbone-vue%E5%88%9B%E5%BB%BA%E6%94%AF%E6%8C%81web%E5%92%8C%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%9A%84%E9%A1%B9%E7%9B%AE/&title=kbone+vue创建支持web和微信小程序的项目 - superKM的博客&summary=
+Kbone 是腾讯开发的解决微信小程序和 Web 端同构的框架。简单来说就是只写一套代码，编译结果可以在 web 端和小程序上运行。"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
       
     </div>
   </section>
@@ -575,26 +755,17 @@ Markdown 是一种轻量级标记语言，它允许人们使用易读易写的�
   
 
   
-    <!-- 显示推荐文章和评论 -->
-
-
-
+    
   <article class="post white-box reveal comments shadow">
     <section class="article typo">
       <p ct><i class='fas fa-comments'></i> 评论</p>
       
-      
-      
-      
-      
-      
-        <section id="comments">
-          <div id="valine_container" class="valine_thread">
-            <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
-          </div>
-        </section>
-      
-      
+      <section id="comments">
+        <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+</div>
+
+      </section>
     </section>
   </article>
 
@@ -607,15 +778,6 @@ Markdown 是一种轻量级标记语言，它允许人们使用易读易写的�
 <!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
 
 
-
-  <script>
-    window.subData = {
-      title: 'kbone+vue创建支持web和微信小程序的项目',
-      tools: true
-    }
-  </script>
-
-
 </div>
 <aside class='l_side'>
   
@@ -626,7 +788,8 @@ Markdown 是一种轻量级标记语言，它允许人们使用易读易写的�
     
 
 
-  <section class="widget toc-wrapper shadow desktop mobile">
+
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
     
   <header>
     
@@ -636,7 +799,7 @@ Markdown 是一种轻量级标记语言，它允许人们使用易读易写的�
 
 
     <div class='content'>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Kbone-特点"><span class="toc-text">Kbone 特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一：安装-kbone-cli"><span class="toc-text">一：安装 kbone-cli</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二：创建对应的-kbone-项目"><span class="toc-text">二：创建对应的 kbone 项目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三：在-main-js-中引入-kbone-ui，使项目-ui-更贴近微信风格（可选）"><span class="toc-text">三：在 main.js 中引入 kbone-ui，使项目 ui 更贴近微信风格（可选）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四：运行项目"><span class="toc-text">四：运行项目</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Kbone-特点"><span class="toc-text">Kbone 特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一：安装-kbone-cli"><span class="toc-text">一：安装 kbone-cli</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二：创建对应的-kbone-项目"><span class="toc-text">二：创建对应的 kbone 项目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三：在-main-js-中引入-kbone-ui，使项目-ui-更贴近微信风格（可选）"><span class="toc-text">三：在 main.js 中引入 kbone-ui，使项目 ui 更贴近微信风格（可选）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四：运行项目"><span class="toc-text">四：运行项目</span></a></li></ol>
     </div>
   </section>
 
@@ -647,6 +810,9 @@ Markdown 是一种轻量级标记语言，它允许人们使用易读易写的�
 </aside>
 
 
+
+    </div>
+    
   
   <footer class="clearfix">
     <br><br>
@@ -678,14 +844,6 @@ Markdown 是一种轻量级标记语言，它允许人们使用易读易写的�
       
         <br>
         <div class="social-wrapper">
-          
-            
-              <a href="/atom.xml"
-                class="social fas fa-rss flat-btn"
-                target="_blank"
-                rel="external nofollow noopener noreferrer">
-              </a>
-            
           
             
               <a href="mailto:583902049@qq.com"
@@ -721,7 +879,7 @@ Markdown 是一种轻量级标记语言，它允许人们使用易读易写的�
     
       
         本站使用
-        <a href="https://volantis.js.org/" target="_blank" class="codename">superkm</a>
+        <a href="https://volantis.js.org/" target="_blank" class="codename">Volantis</a>
         作为主题，总访问量为
           <span id="busuanzi_value_site_pv"><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
           次
@@ -730,22 +888,20 @@ Markdown 是一种轻量级标记语言，它允许人们使用易读易写的�
     
       
         <div class='copyright'>
-        <p><a href="https://github.com/superliebe" target="_blank" rel="noopener">Copyright © 2020 superKM</a></p>
+        <p><a href="https://superliebe.github.io">Copyright © 2017-2020 superkm</a></p>
 
         </div>
       
     
   </footer>
 
-<script>setLoadingBarProgress(80);</script>
 
-
-      <script>setLoadingBarProgress(60);</script>
-    </div>
     <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
   </div>
-  
+  <div>
+    
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.4/dist/jquery.min.js"></script>
+
 
 
   <script>
@@ -756,39 +912,10 @@ Markdown 是一种轻量级标记语言，它允许人们使用易读易写的�
   </script>
 
 
+
+
+
   <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
-
-
-  <script src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.6/dist/scrollreveal.min.js"></script>
-  <script type="text/javascript">
-    $(function() {
-      ScrollReveal().reveal('.l_main .reveal', {
-        distance: '8px',
-        duration: '800',
-        interval: '100',
-        scale: '1'
-      });
-    });
-  </script>
-
-
-  
-<script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
-
-  <script type="text/javascript">
-    $(function() {
-      Waves.attach('.flat-btn', ['waves-button']);
-      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
-      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
-      Waves.attach('.flat-box', ['waves-block']);
-      Waves.attach('.float-box', ['waves-block', 'waves-float']);
-      Waves.attach('.waves-image');
-      Waves.init();
-    });
-  </script>
-
-
-  <script defer src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
 
 
 
@@ -846,31 +973,27 @@ Markdown 是一种轻量级标记语言，它允许人们使用易读易写的�
   
 
 
-
-
-
-
-
-
+<!-- 评论 （PS：只对 valine 做了 Pjax 兼容） -->
 
   
-    
-<script src="https://cdn.jsdelivr.net/npm/valine@1.4/dist/Valine.min.js"></script>
-
   
-  <script>
-  var GUEST_INFO = ['nick','mail','link'];
-  var meta = 'nick,mail,link'.split(',').filter(function(item){
+<script src="/js/valine.js"></script>
+
+
+<script>
+  var GUEST_INFO = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link'.split(',').filter(function (item) {
     return GUEST_INFO.indexOf(item) > -1
   });
-  var REQUIRED_FIELDS = ['nick','mail','link'];
-  var requiredFields = 'nick,mail'.split(',').filter(function(item){
+  var REQUIRED_FIELDS = ['nick', 'mail', 'link'];
+  var requiredFields = 'nick,mail'.split(',').filter(function (item) {
     return REQUIRED_FIELDS.indexOf(item) > -1
   });
-  var valine = new Valine();
+
   function emoji(path, idx, ext) {
-      return path + "/" + path + "-" + idx + "." + ext;
+    return path + "/" + path + "-" + idx + "." + ext;
   }
+
   var emojiMaps = {};
   for (var i = 1; i <= 54; i++) {
     emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
@@ -887,45 +1010,47 @@ Markdown 是一种轻量级标记语言，它允许人们使用易读易写的�
   for (var i = 1; i <= 4; i++) {
     emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
   }
-  valine.init({
-    el: '#valine_container',
-    meta: meta,
-    
-    appId: "dogUA2FSKGTo029M1SEwGROT-MdYXbMMI",
-    appKey: "u0NdtQ8nvHoMdJPSYqm1LRxE",
-    placeholder: "快来评论吧~",
-    pageSize:'10',
-    avatar:'robohash',
-    lang:'zh-cn',
-    visitor: 'true',
-    highlight: 'true',
-    mathJax: 'false',
-    enableQQ: 'true',
-    requiredFields: requiredFields,
-    emojiCDN: 'https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/',
-    emojiMaps: emojiMaps
-  })
-  </script>
+
+  function pjax_valine() {
+    var valinePath = $.trim($('#valine-path').text()) === "none" ?
+            window.location.pathname : $.trim($('#valine-path').text());
+
+    var valinePlaceholder = $.trim($('#valine-placeholder').text()) === "none" ?
+            "快来评论吧~" : $.trim($('#valine-placeholder').text());
+
+    var ALLPATH = '';
+    if(ALLPATH != '') valinePath = ALLPATH;
+
+    var valine = new Valine();
+    valine.init({
+      el: '#valine_container',
+      meta: meta,
+      placeholder: valinePlaceholder,
+      path: valinePath,
+      appId: "dogUA2FSKGTo029M1SEwGROT-MdYXbMMI",
+      appKey: "u0NdtQ8nvHoMdJPSYqm1LRxE",
+      pageSize: '10',
+      avatar: 'robohash',
+      lang: 'zh-cn',
+      visitor: 'true',
+      highlight: 'true',
+      mathJax: 'false',
+      enableQQ: 'true',
+      requiredFields: requiredFields,
+      emojiCDN: 'https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/',
+      emojiMaps: emojiMaps
+    })
+  }
+
+  $(function () {
+    pjax_valine();
+  });
+</script>
 
 
 
 
-
-  
-<script src="/js/app.js"></script>
-
-
-
-  
-<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.6.5/js/search.js"></script>
-
-
-
-  
-<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/comment_typing.js"></script>
-
-
-
+<!-- darkmodejs -->
 
 
 
@@ -933,61 +1058,78 @@ Markdown 是一种轻量级标记语言，它允许人们使用易读易写的�
 
   <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
 <script>
-  function wait(callback, seconds) {
-    var timelag = null;
-    timelag = window.setTimeout(callback, seconds);
-  }
-  !function (e, t, a) {
-    var initCopyCode = function(){
-      var copyHtml = '';
-      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
-      copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
-      copyHtml += '</button>';
-      $(".highlight .code pre").before(copyHtml);
-      $(".article pre code").before(copyHtml);
-      var clipboard = new ClipboardJS('.btn-copy', {
-        target: function(trigger) {
-          return trigger.nextElementSibling;
+    var clipboard = new ClipboardJS('.btn-copy', {
+        target: function (trigger) {
+            return trigger.nextElementSibling
         }
-      });
-      clipboard.on('success', function(e) {
-        let $btn = $(e.trigger);
-        $btn.addClass('copied');
-        let $icon = $($btn.find('i'));
-        $icon.removeClass('fa-copy');
-        $icon.addClass('fa-check-circle');
-        let $span = $($btn.find('span'));
-        $span[0].innerText = 'COPIED';
-        
-        wait(function () { // 等待两秒钟后恢复
-          $icon.removeClass('fa-check-circle');
-          $icon.addClass('fa-copy');
-          $span[0].innerText = 'COPY';
-        }, 2000);
-      });
-      clipboard.on('error', function(e) {
-        e.clearSelection();
-        let $btn = $(e.trigger);
-        $btn.addClass('copy-failed');
-        let $icon = $($btn.find('i'));
-        $icon.removeClass('fa-copy');
-        $icon.addClass('fa-times-circle');
-        let $span = $($btn.find('span'));
-        $span[0].innerText = 'COPY FAILED';
-        
-        wait(function () { // 等待两秒钟后恢复
-          $icon.removeClass('fa-times-circle');
-          $icon.addClass('fa-copy');
-          $span[0].innerText = 'COPY';
-        }, 2000);
-      });
+    });
+    function wait(callback, seconds) {
+        var timelag = null;
+        timelag = window.setTimeout(callback, seconds)
     }
-    initCopyCode();
-  }(window, document);
+    function pjax_initCopyCode() {
+        var copyHtml = '';
+        copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+        copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+        copyHtml += '</button>';
+        $(".highlight .code pre").before(copyHtml);
+        $(".article pre code").before(copyHtml);
+        clipboard.off('success').on('success', function (e) {
+            let $btn = $(e.trigger);
+            $btn.addClass('copied');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-check-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPIED';
+            wait(function () {
+                $icon.removeClass('fa-check-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        });
+        clipboard.off('error').on('error', function (e) {
+            e.clearSelection();
+            let $btn = $(e.trigger);
+            $btn.addClass('copy-failed');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-times-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPY FAILED';
+            wait(function () {
+                $icon.removeClass('fa-times-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        })
+    }
+    $(function () {
+        pjax_initCopyCode()
+    });
 </script>
 
 
+<!-- scrollreveal -->
 
+  <script src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.6/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    function pjax_scrollrebeal() {
+      ScrollReveal().reveal('.l_main .reveal', {
+        distance: '32px',
+        duration: '800',
+        interval: '20',
+        scale: '1',
+        easing: 'ease-out'
+      });
+    }
+
+    $(function () {
+      pjax_scrollrebeal();
+    });
+  </script>
+
+<!-- ******************************** -->
 
 <!-- fancybox -->
 <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
@@ -1002,7 +1144,7 @@ Markdown 是一种轻量级标记语言，它允许人们使用易读易写的�
       }
       $(element).attr("data-fancybox", "images");
       var caption = "";   // 描述信息
-      if ($(this).attr('alt')) {  // 标准 markdown 描述信息
+      if ($(this).attr('alt')) {  // 判断当前页面是否存在描述信息
         $(element).attr('data-caption', $(this).attr('alt'));
         caption = $(this).attr('alt');
       }
@@ -1034,9 +1176,174 @@ Markdown 是一种轻量级标记语言，它允许人们使用易读易写的�
   });
 </script>
 
+<!-- ******************************** -->
+
+
+  
+<script src="/js/app.js"></script>
 
 
 
-  <script>setLoadingBarProgress(100);</script>
+
+  
+    
+<script src="/js/search.js"></script>
+
+  
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js" data-pjax></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function () {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/comment_typing.js"></script>
+
+
+
+
+
+
+
+    
+      
+
+
+<script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script>
+
+<!-- 样式位于：source/css/_third-party/pjaxanimate.styl -->
+
+<div class="pjax-animate">
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css">
+    <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+    <div id="loading-bar-wrapper"><script>NProgress.configure({parent:"#loading-bar-wrapper",trickleSpeed: 100})</script></div>
+    <script>
+      window.ShowLoading = function() {
+        NProgress.start();
+      };
+      window.HideLoading = function() {
+        NProgress.done();
+      }
+    </script>
+  
+</div>
+
+<script>
+    var pjax;
+    document.addEventListener('DOMContentLoaded', function () {
+      pjax = new Pjax({
+        elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([pjax-fancybox])',
+        selectors: [
+          "title",
+          "#pjax-container",
+          "#pjax-header-nav-list"
+        ],
+        cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+        timeout: 5000
+      });
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+      window.stop(); // 相当于点击了浏览器的停止按钮
+      var currentUrl = window.location.pathname;
+      var targetUrl = e.triggerElement.href;
+      var banUrl = [""];
+      if (banUrl[0] != "") {
+        banUrl.forEach(item => {
+          if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+            window.location.href = targetUrl;
+          }
+        });
+      }
+      window.subData = null; // 移除标题（用于一二级导航栏切换处）
+      $.fancybox.close();    // 关闭弹窗
+      $('.nav-main').find('.list-v').not('.menu-phone').css("display","none"); // 移除小尾巴
+      $('.menu-phone.list-v').css("display","none"); // 移除小尾巴
+      $('.l_header .switcher .s-search').removeClass('active'); // 关闭移动端激活的搜索框
+      $('.l_header').removeClass('z_search-open'); // 关闭移动端激活的搜索框
+      $('.wrapper').removeClass('sub'); // 跳转页面时关闭二级导航
+
+      $('.s-top').unbind('click');   // 解绑
+      $('.menu a').unbind('click');  // 解绑
+      $(window).unbind('resize');    // 解绑
+      $(window).unbind('scroll');    // 解绑
+      $(document).unbind('scroll');  // 解绑
+      $(document).unbind('click');   // 解绑
+      $('body').unbind('click');     // 解绑
+      window.ShowLoading();
+    });
+
+    document.addEventListener('pjax:complete', function () {
+      // 关于百度统计对 SPA 页面的处理：
+      // 方案一：百度统计>管理>单页应用设置中，打开开启按钮即可对SPA进行统计。 https://tongji.baidu.com/web/help/article?id=324
+      // 方案二：取消注释下列代码。 https://tongji.baidu.com/web/help/article?id=235
+      // 
+
+      // 关于谷歌统计对 SPA 页面的处理：
+      // 当应用以动态方式加载内容并更新地址栏中的网址时，也应该更新通过 gtag.js 存储的网页网址。
+      // https://developers.google.cn/analytics/devguides/collection/gtagjs/single-page-applications?hl=zh-cn
+      
+
+      $('.nav-main').find('.list-v').not('.menu-phone').removeAttr("style",""); // 移除小尾巴的移除
+      $('.menu-phone.list-v').removeAttr("style",""); // 移除小尾巴的移除
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+
+      try{
+        pjax_fancybox();
+        
+          
+          if ('') {
+            $('').backstretch("resize");
+          } else {
+            $.backstretch("resize");
+          }
+        
+        
+        
+          pjax_scrollrebeal();
+        
+        
+          pjax_initCopyCode();
+        
+        
+          pjax_valine();
+        
+        
+        
+      } catch (e) {
+        console.log(e);
+      }
+      window.HideLoading();
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+      window.HideLoading();
+      window.location.href = e.triggerElement.href;
+    });
+</script>
+
+    
+  </div>
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7}});</script></body>
 </html>

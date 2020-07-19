@@ -16,11 +16,14 @@
 
   <!-- 页面元数据 -->
   
-  <title>dockefile的使用 - superKM的博客</title>
+  <title>pwa渐进式webapp - superKM的博客</title>
   
     <meta name="keywords" content="docker">
   
 
+  
+    <meta name="description" content="
+PWA（Progressive web apps，渐进式 Web 应用）运用现代的 Web API 以及传统的渐进式增强策略来创建跨平台 Web 应用程序， 是Google 在2016年提出的概念，2017年落地的web技术。目的就是在移动端利用提供的标准化框架，在网页应用中实现和原生应用相近的用户体验的渐进式...">
   
 
   <!-- feed -->
@@ -412,7 +415,7 @@
 
 <div id="pjax-data" style="display: none">
   <div id="pjax-ispage">true</div>
-  <div id="pjax-pageTitle">dockefile的使用</div>
+  <div id="pjax-pageTitle">pwa渐进式webapp</div>
   <div id="pjax-enable-cover">true</div>
   
   <div id="valine-path">none</div>
@@ -463,8 +466,8 @@
         
           
   <h1 class="title">
-    <a href="/2020/07/09/dockerfile%E7%9A%84%E4%BD%BF%E7%94%A8/">
-      dockefile的使用
+    <a href="/2020/07/17/pwa%E6%B8%90%E8%BF%9B%E5%BC%8Fwebapp/">
+      pwa渐进式webapp
     </a>
   </h1>
 
@@ -502,7 +505,7 @@
               <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2020年7月9日</p>
+    <p>发布于：2020年7月17日</p>
   </a>
 </div>
 
@@ -526,49 +529,152 @@
         <div class="article-entry" itemprop="articleBody">
           
           
-          <p><img src="https://s1.ax1x.com/2020/07/09/UnyB0U.png" alt=""></p>
+          <p><img src="https://s1.ax1x.com/2020/07/17/UsQz7j.png" alt=""></p>
+<p>PWA（Progressive web apps，渐进式 Web 应用）运用现代的 Web API 以及传统的渐进式增强策略来创建跨平台 Web 应用程序， 是Google 在2016年提出的概念，2017年落地的web技术。目的就是在移动端利用提供的标准化框架，在网页应用中实现和原生应用相近的用户体验的渐进式网页应用。</p>
 <a id="more"></a>
 
-<p>docker 是用来构建 docker 镜像文件，命令参数的脚本。</p>
-<p>构建步骤</p>
-<ol>
-<li>编写一个 dockerfile 文件。</li>
-<li>docker build 构建成为一个镜像。</li>
-<li>docker run 运行镜像。</li>
-<li>docker push 发布镜像（dockerhub , 阿里云仓库）。</li>
+<h3 id="pwa的优势"><a href="#pwa的优势" class="headerlink" title="pwa的优势"></a>pwa的优势</h3><ol>
+<li><strong>渐进式</strong>  - 适用于所有浏览器，因为它是以渐进式增强作为宗旨开发的。</li>
+<li><strong>流畅</strong> - 能够借助 service worker 在离线或者网络不好的条件下访问。</li>
+<li><strong>可安装</strong> - 用户可以添加常用的webapp到桌面上，免去去应用商店下载的麻烦。</li>
+<li><strong>原生体验</strong> - 可以和app一样拥有首屏加载动画，可以隐藏地址栏等沉浸式体验。</li>
+<li><strong>粘性</strong> - 通过离线通知，可以让用户回流。</li>
 </ol>
-<p>很多官方镜像都是基础包，很多功能没有，我们通常会自己搭建自己的镜像！</p>
-<h3 id="dockerfile-的构建过程"><a href="#dockerfile-的构建过程" class="headerlink" title="dockerfile 的构建过程"></a>dockerfile 的构建过程</h3><p><strong>基础知识</strong></p>
-<ol>
-<li>每个指令都必须是大写字母。</li>
-<li>执行从上到下顺序执行。</li>
-<li>#表示注释</li>
-<li>每个指令都会创建一个新的镜像层并提交。</li>
+<h3 id="manifest-应用程序清单的配置"><a href="#manifest-应用程序清单的配置" class="headerlink" title="manifest 应用程序清单的配置"></a>manifest 应用程序清单的配置</h3><p>manifest是一个可配置的json文件，可以使web添加至桌面，设置启动图标，隐藏地址栏等操作</p>
+<ul>
+<li><p>在html文件中引用配置文件</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"manifest"</span> <span class="attr">href</span>=<span class="string">"manifest.json"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>编写 manifest.json 文件</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"name"</span>:<span class="string">"pwa渐进式web"</span>,</span><br><span class="line">  <span class="attr">"short_name"</span>:<span class="string">"pwa"</span>,</span><br><span class="line">    <span class="attr">"icons"</span>:[&#123;</span><br><span class="line">        <span class="attr">"src"</span>: <span class="string">"./image/icon.png"</span>,</span><br><span class="line">        <span class="attr">"sizes"</span>: <span class="string">"144x144"</span>,</span><br><span class="line">        <span class="attr">"type"</span>: <span class="string">"image/png"</span></span><br><span class="line">    &#125;],</span><br><span class="line">    <span class="attr">"background_color"</span>:<span class="string">"#9b59b6"</span>,</span><br><span class="line">    <span class="attr">"theme_color"</span>:<span class="string">"#34495e"</span>,</span><br><span class="line">    <span class="attr">"display"</span>:<span class="string">"standalone"</span>,</span><br><span class="line">    <span class="attr">"start_url"</span>:<span class="string">"/index.html"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<p>  manifest 属性</p>
+<table>
+<thead>
+<tr>
+<th>属性明</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>name</td>
+<td>用于指定应用的名称和启动画面的文字</td>
+</tr>
+<tr>
+<td>short_name</td>
+<td>应用的短名称，用于主屏显示</td>
+</tr>
+<tr>
+<td>start_url</td>
+<td>指定应用启动加载的页面</td>
+</tr>
+<tr>
+<td>icons</td>
+<td>指定各种环境中作为应用的图标，最佳144x144</td>
+</tr>
+<tr>
+<td>background_color</td>
+<td>启动动画的背景颜色</td>
+</tr>
+<tr>
+<td>theme_color</td>
+<td>应用程序的主题颜色</td>
+</tr>
+<tr>
+<td>display</td>
+<td>fullscreen：全屏显示，不显示状态栏；standalone：更像一个独立的应用程序；minimal-ui：拥有地址显示栏；</td>
+</tr>
+</tbody></table>
+<p>浏览器中就已经可以看到配置信息了</p>
+<p><img src="https://cdn.jsdelivr.net/gh/superliebe/picGo/20200717174214.png" alt="image-20200717174214643"></p>
+<h3 id="service-worker"><a href="#service-worker" class="headerlink" title="service worker"></a>service worker</h3><ul>
+<li>一个标准的pwa程序必须包含3个部分<ol>
+<li>https 服务器 或者 <a href="http://localhost" target="_blank" rel="noopener">http://localhost</a></li>
+<li>manifest.josn文件</li>
+<li>service worker</li>
 </ol>
-<p><img src="https://s1.ax1x.com/2020/07/09/UnWytO.png" alt=""></p>
-<p>docker 镜像逐渐成为企业交付的标准，所以你懂的。</p>
-<p>DockerFile: 构建文件，定义了一切的步骤，源代码</p>
-<p>DockerImages : 通过 DockerFile 构建生成的镜像，最终发布和运行的产品！</p>
-<p>Docker 容器 : 容器就是镜像运行起来提供服务</p>
-<h3 id="dockerfile-指令"><a href="#dockerfile-指令" class="headerlink" title="dockerfile 指令"></a>dockerfile 指令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">FROM                        <span class="comment">#基础镜像，一切从这里开始构建</span></span><br><span class="line">MAINTAINER (maintainer)     <span class="comment">#镜像是谁写的，姓名+邮箱</span></span><br><span class="line">RUN                         <span class="comment">#镜像构建的时候需要运行的命令</span></span><br><span class="line">ADD                         <span class="comment">#添加内容，如添加一个tomcat的压缩包</span></span><br><span class="line">WORKDIR                     <span class="comment">#镜像的工作目录</span></span><br><span class="line">VOLUME                      <span class="comment">#挂载的目录</span></span><br><span class="line">EXPOST                      <span class="comment">#暴露端口配置</span></span><br><span class="line">CMD                         <span class="comment">#指定这个容器启动的时候要运行的命令，只有最后一个会生效，可被替代！</span></span><br><span class="line">ENTRYPOINT (entrypoint)     <span class="comment">#指定这个容器启动的时候要运行的命令，可以追加命令！</span></span><br><span class="line">ONBUILD                     <span class="comment">#当构建一个被继承 DockerFile 这个时候就会运行 ONBUILD 的指令，触发指令！</span></span><br><span class="line">COPY			            <span class="comment"># 类似ADD ，将文件拷贝到镜像中！</span></span><br><span class="line">ENV				            <span class="comment"># 构建的时候设置环境变量！</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="实战测试"><a href="#实战测试" class="headerlink" title="实战测试"></a>实战测试</h3><p>Docker Hub 中 99% 的镜像都是从 FROM scratch 这个基础镜像过来的！然后配置需要的软件和配置来进行构建</p>
-<blockquote>
-<p>创建一个自己的centos</p>
-</blockquote>
-<ul>
-<li>在 home 目录中创建 dockerfile 文件夹，<code>vim mydockerfile</code> ,编写dockerfile文件 </li>
+</li>
+<li>service worker 主要用来做持久的离线化缓存;</li>
+<li>service worker 可以极大提升webapp的用户体验;</li>
+<li>service worker 是一个独立的worker线程，独立于网页进程;</li>
+<li>必须在https下才能正常工作;</li>
+<li>一旦被install后必须手动unregister;</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 编写dockersfile文件</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#基于centos基础环境</span></span><br><span class="line">FROM centos</span><br><span class="line">MAINTAINER superkm&lt;583902049@qq.com&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置环境变量</span></span><br><span class="line">ENV MYPATH /user/<span class="built_in">local</span>  <span class="comment">#默认进入的目录</span></span><br><span class="line">WORKDIR <span class="variable">$MYPATH</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 执行安装的一些命令</span></span><br><span class="line">RUN yum -y install vim</span><br><span class="line">RUN yum -y install net-tools</span><br><span class="line"></span><br><span class="line"><span class="comment">#暴漏的端口</span></span><br><span class="line">EXPOSE 80</span><br><span class="line"></span><br><span class="line"><span class="comment">#输出信息，默认进入命令行</span></span><br><span class="line">CMD <span class="built_in">echo</span> <span class="variable">$MYPATH</span></span><br><span class="line">CMD <span class="built_in">echo</span> <span class="string">"---end---"</span></span><br><span class="line">CMD /bin/bash</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>构建镜像</li>
+<p><img src="https://cdn.jsdelivr.net/gh/superliebe/picGo/20200717175058.png" alt="image-20200717175058142"></p>
+<h4 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h4><ul>
+<li><p><strong>install</strong> 注册成功时触发，主要用于缓存资源；</p>
+</li>
+<li><p><strong>acvitate</strong> 激活时触发，主要用于删除旧资源；</p>
+</li>
+<li><p><strong>fetch</strong> 发送请求时触发，主要用于操作缓存和读取网络资源；</p>
+</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">docker build -f mydockerfile -t mycentos:0.1 .</span><br><span class="line"></span><br><span class="line"><span class="comment"># -f dockerfile脚本文件</span></span><br><span class="line"><span class="comment"># -t 生成目标镜像且生成到当前目录下，注意最后有个 .</span></span><br><span class="line"><span class="comment"># 构建成功的提示</span></span><br><span class="line"><span class="comment"># Successfully built 3c490273278b</span></span><br><span class="line"><span class="comment"># Successfully tagged mycentos:0.1</span></span><br></pre></td></tr></table></figure>
+<h4 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h4><ul>
+<li>在window.onload中注册service worker ,防止与其他资源竞争；</li>
+<li>老的浏览器版本不兼容，需要使用 <code>if(&#39;serviceWorker&#39; in navigator){}；</code> ;</li>
+<li>注册service worker  , navigator.serviceWork.register(‘./sw.js’)，返回一个promise对象；</li>
+<li><code>self.skipWaiting()</code>跳过等待，返回一个promise对象；</li>
+<li><code>event.waitUntil()</code> 方法的扩展参数是一个promise对象，会在promise结束后结束当前生命周期函数，防止浏览器在异步操作；</li>
+<li>service worker 激活后，会在下一次刷新页面的时候生效，可以通过<code>self.clients.claim()</code>立即获取控制权；</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">// 页面加载完之后，注册serviceWorker</span><br><span class="line">     window.addEventListener('load',async ()=&gt;&#123;</span><br><span class="line">         // 检测是否可用</span><br><span class="line">         if('serviceWorker' in navigator)&#123;</span><br><span class="line">             try&#123;</span><br><span class="line">                 const registration = await navigator.serviceWorker.register('./sw.js');</span><br><span class="line">                 console.log("注册成功",registration)</span><br><span class="line">             &#125;catch(e)&#123;</span><br><span class="line">                 console.log("注册失败",e)</span><br><span class="line">             &#125;</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;);</span><br></pre></td></tr></table></figure>
 
-<p>测试运行，正常使用</p>
-<p>我们拿到一个镜像，可以研究它是怎么做的</p>
-<p>列出镜像的变更历史 <code>docker history 镜像id</code></p>
+<p>sw.js  这三个写法基本固定</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//注册</span></span><br><span class="line">self.addEventListener(<span class="string">'install'</span>, event =&gt; &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'----install-----'</span>)</span><br><span class="line">    <span class="built_in">console</span>.log(event)</span><br><span class="line">    <span class="comment">//self.skipWaiting 会让service worker 跳过等待直接进入activate</span></span><br><span class="line">    <span class="comment">//event.waitUntil 等待skipWaiting 结束后才进入activate</span></span><br><span class="line">    event.waitUntil(self.skipWaiting()) </span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">//激活</span></span><br><span class="line">self.addEventListener(<span class="string">'activate'</span>, event =&gt; &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'----activate-----'</span>)</span><br><span class="line">    <span class="built_in">console</span>.log(event)</span><br><span class="line">    <span class="comment">//service worker 激活后，立即获取控制权</span></span><br><span class="line">    event.waitUntil(self.clients.claim());</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">//拦截请求</span></span><br><span class="line">self.addEventListener(<span class="string">'fetch'</span>,event =&gt; &#123;</span><br><span class="line">    <span class="comment">//可以抓取到所有网络请求</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'----fetch-----'</span>)</span><br><span class="line">    <span class="built_in">console</span>.log( event)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+
+
+<p>刷新浏览器就可以看到控制台上相应生命周期输出的结果</p>
+<p><img src="https://cdn.jsdelivr.net/gh/superliebe/picGo/20200718174427.png" alt="image-20200718174427487"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/superliebe/picGo/20200718174524.png" alt="image-20200718174524089"></p>
+<h4 id="fetch-api"><a href="#fetch-api" class="headerlink" title="fetch api"></a>fetch api</h4><p>类似于ajax，专门用于service worker 中请求数据使用 fetch(url,config)</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">fetch(<span class="string">"/api/..."</span>).then(<span class="function"><span class="params">res</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="comment">//res得到的事响应式内容，是一个二进制流</span></span><br><span class="line">    <span class="comment">//调用res.json 可以把数据转化为可读的json格式</span></span><br><span class="line">    <span class="keyword">return</span> res.json()</span><br><span class="line">&#125;).then(<span class="function"><span class="params">data</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(data)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="notification-通知"><a href="#notification-通知" class="headerlink" title="notification 通知"></a>notification 通知</h4><p>通过推送告诉用户某信息，比如断网/联网的时候要通知到用户，提升用户体验。</p>
+<p><strong>Notification.permission</strong> 可以获取到当前用户通知 的权限</p>
+<ul>
+<li>defalut 默认，未授权</li>
+<li>denied 拒绝授权，无法再次请求授权，无法弹出窗口</li>
+<li>granted 通过授权</li>
+</ul>
+<p><strong>Notification.requestPremission()</strong> 可以请求用户授权。</p>
+<p>*<em>new Notification(‘提示的标题’,{body:’提示的内容’,icon:’提示的图标’}) *</em> 可以显示通知。</p>
+<p> <img src="https://cdn.jsdelivr.net/gh/superliebe/picGo/20200718194421.png" alt="image-20200718194420948"></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//如果一进来我们发现用户没有联网就给用户一个通知</span></span><br><span class="line"><span class="keyword">if</span>(Notification.permission==<span class="string">'defalut'</span>)&#123;</span><br><span class="line">    <span class="comment">//授权开启通知</span></span><br><span class="line">    Notification.requestPermission();</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(!navigator.onLine)&#123;</span><br><span class="line">    <span class="comment">//断网</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"断网"</span>)</span><br><span class="line">    <span class="keyword">new</span> Notification(<span class="string">"提示"</span>,&#123;<span class="attr">body</span>:<span class="string">'网络已断开,您访问的是缓存'</span>,<span class="attr">icon</span>:<span class="string">'/image/icon.png'</span>&#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.addEventListener(<span class="string">"online"</span>,()=&gt;&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"网络已连接"</span>)</span><br><span class="line">    <span class="keyword">new</span> Notification(<span class="string">"提示"</span>,&#123;<span class="attr">body</span>:<span class="string">'网络已连接，请刷新页面获取新的数据'</span>,<span class="attr">icon</span>:<span class="string">'/image/icon.png'</span>&#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h4 id="cache-storage"><a href="#cache-storage" class="headerlink" title="cache storage"></a>cache storage</h4><p>配合service worker  来实现缓存</p>
+<p><strong>caches.api 常用方法</strong></p>
+<ol>
+<li><code>caches.open(cachesName).then(res=&gt;{})</code> 用户打开一个缓存，返回一个匹配cachesNam的catch对象promise，类似于链接数据库操作；</li>
+<li><code>caches.keys()</code> 返回一个promise对象，包括所有缓存的key (数据库名) ；</li>
+<li><code>caches.delete(key)</code> 根据key删除对应的缓存；</li>
+</ol>
+<p><strong>cache 常用方法（单条数据操作）</strong></p>
+<ol>
+<li><code>cache.put(req,res)</code> 把请求当key，并把对应的相应存储起来；</li>
+<li><code>cache.add(url)</code> 根据url发起请求，并把相应结果存储起来；</li>
+<li><code>cache.addAll(url)</code> 抓取一个url数组，并把结果都存起来；</li>
+<li><code>cache.match(req)</code> 获取req对应的response；</li>
+</ol>
+<p><strong>通过caches api 来实现读取离线缓存</strong></p>
+<p><img src="https://s1.ax1x.com/2020/07/18/U29h1H.png" alt="U29h1H.png"></p>
+<p>html中引入对应的资源文件，在页面加载完之后，注册serviceWorker。</p>
+<p>sw.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//注册,主要缓存内容</span></span><br><span class="line"><span class="keyword">const</span> CACHE_NAME = <span class="string">'cache_3'</span>; <span class="comment">//定义存储缓存的名字--类似数据库</span></span><br><span class="line"><span class="keyword">const</span> CACHE_URL = [</span><br><span class="line">    <span class="string">'/'</span>,</span><br><span class="line">    <span class="string">'/image/icon.png'</span>,</span><br><span class="line">    <span class="string">'/manifest.json'</span>,</span><br><span class="line">    <span class="string">'/index.css'</span></span><br><span class="line">]</span><br><span class="line">self.addEventListener(<span class="string">'install'</span>, <span class="keyword">async</span> event =&gt; &#123;</span><br><span class="line">    <span class="comment">//开启cache缓存，类似连接数据库</span></span><br><span class="line">    <span class="keyword">const</span> cache = <span class="keyword">await</span> caches.open(CACHE_NAME);</span><br><span class="line">    <span class="comment">//cache 添加需要缓存的资源,使用await 等待把所有缓存存起来再进行</span></span><br><span class="line">    <span class="keyword">await</span> cache.addAll(CACHE_URL)</span><br><span class="line">    <span class="comment">//跳过等待直接进入activate</span></span><br><span class="line">    <span class="keyword">await</span> self.skipWaiting();</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">//激活，主要清除缓存</span></span><br><span class="line">self.addEventListener(<span class="string">'activate'</span>, <span class="keyword">async</span> event =&gt; &#123;</span><br><span class="line">    <span class="comment">//获取到左右资源的key</span></span><br><span class="line">    <span class="keyword">const</span> keys = <span class="keyword">await</span> caches.keys()</span><br><span class="line">    keys.forEach(<span class="function"><span class="params">key</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (key != CACHE_NAME) &#123;</span><br><span class="line">            <span class="comment">//旧资源</span></span><br><span class="line">            caches.delete(key)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="comment">//service worker 激活后，立即获取控制权</span></span><br><span class="line">    <span class="keyword">await</span> self.clients.claim();</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">//监听请求，判断资源是否能够请求成功，成功则取相应结果，断网则取缓存内容</span></span><br><span class="line">self.addEventListener(<span class="string">'fetch'</span>, <span class="keyword">async</span> event =&gt; &#123;</span><br><span class="line">    <span class="comment">//请求对象</span></span><br><span class="line">    <span class="keyword">const</span> req = event.request;</span><br><span class="line">    <span class="comment">//只缓存同源内容</span></span><br><span class="line">    <span class="keyword">const</span> url = <span class="keyword">new</span> URL(req.url);</span><br><span class="line">    <span class="keyword">if</span> (url.origin !== location.origin) &#123;</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//给浏览器相应,</span></span><br><span class="line">    <span class="keyword">if</span> (req.url.includes(<span class="string">"/api"</span>)) &#123;</span><br><span class="line">        <span class="comment">//资源走网络优先</span></span><br><span class="line">        event.respondWith(networkFirst(req))</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">//资源走缓存优先</span></span><br><span class="line">        event.respondWith(cacheFrist(req))</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//网络优先</span></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">networkFirst</span>(<span class="params">req</span>) </span>&#123;</span><br><span class="line">    <span class="comment">//取缓存中读取</span></span><br><span class="line">    <span class="keyword">const</span> cache = <span class="keyword">await</span> caches.open(CACHE_NAME);</span><br><span class="line">    <span class="comment">//先从网络获取资源</span></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> fresh = <span class="keyword">await</span> fetch(req);</span><br><span class="line">        <span class="comment">//获取到的数据应该再次更新到缓存当中，把响应的备份存到缓存当中</span></span><br><span class="line">        cache.put(req,fresh.clone())</span><br><span class="line">        <span class="keyword">return</span> fresh</span><br><span class="line">    &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">        <span class="comment">//匹配与req对应的资源</span></span><br><span class="line">        <span class="keyword">const</span> cached = <span class="keyword">await</span> cache.match(req);</span><br><span class="line">        <span class="keyword">return</span> cached</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//缓存优先</span></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">cacheFrist</span>(<span class="params">req</span>) </span>&#123;</span><br><span class="line">    <span class="comment">//打开缓存</span></span><br><span class="line">    <span class="keyword">const</span> cache = <span class="keyword">await</span> caches.open(CACHE_NAME);</span><br><span class="line">    <span class="comment">//取出对应数据</span></span><br><span class="line">    <span class="keyword">const</span> cached = <span class="keyword">await</span> cache.match(req)</span><br><span class="line">    <span class="keyword">if</span> (cached) &#123;</span><br><span class="line">        <span class="comment">//如果从缓存中得到了，直接返回缓存</span></span><br><span class="line">        <span class="keyword">return</span> cached</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> fresh = <span class="keyword">await</span> fetch(req);</span><br><span class="line">        <span class="keyword">return</span> fresh</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>打开控制台，application中即可看到被缓存的文件。</p>
+<p><img src="https://s1.ax1x.com/2020/07/18/U2C9H0.png" alt="U2C9H0.png"></p>
+<p>勾选network中的 offline online来关闭网络， 刷新页面会发现，即使断网的情况洗也可以访问到正常的数据。</p>
 
           
             <div class='article_footer'>
@@ -605,7 +711,7 @@
           
         
           
-            <p>本文永久链接是：<a href=http://superliebe.github.io/2020/07/09/dockerfile%E7%9A%84%E4%BD%BF%E7%94%A8/>http://superliebe.github.io/2020/07/09/dockerfile%E7%9A%84%E4%BD%BF%E7%94%A8/</a></p>
+            <p>本文永久链接是：<a href=http://superliebe.github.io/2020/07/17/pwa%E6%B8%90%E8%BF%9B%E5%BC%8Fwebapp/>http://superliebe.github.io/2020/07/17/pwa%E6%B8%90%E8%BF%9B%E5%BC%8Fwebapp/</a></p>
           
         
       </blockquote>
@@ -656,10 +762,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-07-11T21:26:46+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-07-19T18:52:27+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2020年7月11日</p>
+    <p>更新于：2020年7月19日</p>
   </a>
 </div>
 
@@ -686,7 +792,8 @@
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
           
-          href="http://connect.qq.com/widget/shareqq/index.html?url=http://superliebe.github.io/2020/07/09/dockerfile%E7%9A%84%E4%BD%BF%E7%94%A8/&title=dockefile的使用 - superKM的博客&summary="
+          href="http://connect.qq.com/widget/shareqq/index.html?url=http://superliebe.github.io/2020/07/17/pwa%E6%B8%90%E8%BF%9B%E5%BC%8Fwebapp/&title=pwa渐进式webapp - superKM的博客&summary=
+PWA（Progressive web apps，渐进式 Web 应用）运用现代的 Web API 以及传统的渐进式增强策略来创建跨平台 Web 应用程序， 是Google 在2016年提出的概念，2017年落地的web技术。目的就是在移动端利用提供的标准化框架，在网页应用中实现和原生应用相近的用户体验的渐进式网页应用。"
           
           >
           
@@ -698,7 +805,8 @@
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
           
-          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://superliebe.github.io/2020/07/09/dockerfile%E7%9A%84%E4%BD%BF%E7%94%A8/&title=dockefile的使用 - superKM的博客&summary="
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://superliebe.github.io/2020/07/17/pwa%E6%B8%90%E8%BF%9B%E5%BC%8Fwebapp/&title=pwa渐进式webapp - superKM的博客&summary=
+PWA（Progressive web apps，渐进式 Web 应用）运用现代的 Web API 以及传统的渐进式增强策略来创建跨平台 Web 应用程序， 是Google 在2016年提出的概念，2017年落地的web技术。目的就是在移动端利用提供的标准化框架，在网页应用中实现和原生应用相近的用户体验的渐进式网页应用。"
           
           >
           
@@ -710,7 +818,8 @@
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
           
-          href="http://service.weibo.com/share/share.php?url=http://superliebe.github.io/2020/07/09/dockerfile%E7%9A%84%E4%BD%BF%E7%94%A8/&title=dockefile的使用 - superKM的博客&summary="
+          href="http://service.weibo.com/share/share.php?url=http://superliebe.github.io/2020/07/17/pwa%E6%B8%90%E8%BF%9B%E5%BC%8Fwebapp/&title=pwa渐进式webapp - superKM的博客&summary=
+PWA（Progressive web apps，渐进式 Web 应用）运用现代的 Web API 以及传统的渐进式增强策略来创建跨平台 Web 应用程序， 是Google 在2016年提出的概念，2017年落地的web技术。目的就是在移动端利用提供的标准化框架，在网页应用中实现和原生应用相近的用户体验的渐进式网页应用。"
           
           >
           
@@ -734,8 +843,9 @@
         
           <div class="prev-next">
             
-              <a class='prev' href='/2020/07/11/docker%E9%95%9C%E5%83%8F%E5%8F%91%E5%B8%83/'>
-                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>docker镜像发布到dockerhub和阿里云</p>
+            
+              <a class='next' href='/2020/07/11/docker%E9%95%9C%E5%83%8F%E5%8F%91%E5%B8%83/'>
+                <p class='title'>docker镜像发布到dockerhub和阿里云<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
                 <p class='content'>docker 镜像发布，一般使用以下两种情况
 
 
@@ -746,13 +856,6 @@
 
 
 docker 镜像发布到 docker...</p>
-              </a>
-            
-            
-              <a class='next' href='/2020/07/01/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/'>
-                <p class='title'>git常用命令<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-                <p class='content'>
-</p>
               </a>
             
           </div>
@@ -806,7 +909,7 @@ docker 镜像发布到 docker...</p>
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#dockerfile-的构建过程"><span class="toc-text">dockerfile 的构建过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dockerfile-指令"><span class="toc-text">dockerfile 指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实战测试"><span class="toc-text">实战测试</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#pwa的优势"><span class="toc-text">pwa的优势</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#manifest-应用程序清单的配置"><span class="toc-text">manifest 应用程序清单的配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#service-worker"><span class="toc-text">service worker</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#生命周期"><span class="toc-text">生命周期</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用方法"><span class="toc-text">使用方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#fetch-api"><span class="toc-text">fetch api</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#notification-通知"><span class="toc-text">notification 通知</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#cache-storage"><span class="toc-text">cache storage</span></a></li></ol></li></ol>
     </div>
   </section>
 
